@@ -6,6 +6,7 @@ MainMenu::MainMenu(QWidget *parent)
     , ui(new Ui::MainMenu)
 {
     ui->setupUi(this);
+    ui->menuStack->setCurrentIndex(0); // Start on the Main Menu
 }
 
 MainMenu::~MainMenu()
