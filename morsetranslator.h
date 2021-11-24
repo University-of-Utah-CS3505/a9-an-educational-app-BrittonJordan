@@ -8,8 +8,8 @@
 class MorseTranslator{
 
 private:
-    static QMap<QString, QChar> toChar;
-    static QMap<QChar, QString> toMorse;
+    QMap<QString, QChar> toChar;
+    QMap<QChar, QString> toMorse;
 
 public:
     MorseTranslator();

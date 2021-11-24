@@ -1,5 +1,6 @@
 #include "mainmenu.h"
 #include "ui_mainmenu.h"
+#include "morsetranslatortests.h"
 
 MainMenu::MainMenu(QWidget *parent)
     : QMainWindow(parent)
@@ -7,6 +8,9 @@ MainMenu::MainMenu(QWidget *parent)
 {
     ui->setupUi(this);
     ui->menuStack->setCurrentIndex(0); // Start on the Main Menu
+
+    MorseTranslatorTests test;
+    test.runTests();
 }
 
 MainMenu::~MainMenu()
