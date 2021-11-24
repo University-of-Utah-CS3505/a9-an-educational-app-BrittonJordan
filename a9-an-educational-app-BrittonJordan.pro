@@ -10,10 +10,12 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    mainmenu.cpp
+    mainmenu.cpp \
+    morsetranslator.cpp
 
 HEADERS += \
-    mainmenu.h
+    mainmenu.h \
+    morsetranslator.h
 
 FORMS += \
     mainmenu.ui
