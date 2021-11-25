@@ -30,7 +30,7 @@
      <string notr="true">background-color: rgb(204, 193, 177);</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="topMenu">
      <widget class="QLabel" name="gameTitleLabel">
@@ -82,7 +82,7 @@
         <x>70</x>
         <y>80</y>
         <width>160</width>
-        <height>121</height>
+        <height>241</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="levelButtonsLayout">
@@ -97,6 +97,41 @@
         <widget class="QPushButton" name="level2Button">
          <property name="text">
           <string>Level 2: F - J</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="level3Button">
+         <property name="text">
+          <string>Level 3: K - P</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="level4Button">
+         <property name="text">
+          <string>Level 4: Q - U</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="level5Button">
+         <property name="text">
+          <string>Level 5: V - Z</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="level6Button">
+         <property name="text">
+          <string>Level 6: Mastery</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="level7Button">
+         <property name="text">
+          <string>Level 7: Random</string>
          </property>
         </widget>
        </item>

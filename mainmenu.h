@@ -17,8 +17,14 @@ public:
 
 private slots:
     void on_studyButton_clicked();
-
     void on_menuButton_clicked();
+    void level1();
+    void level2();
+    void level3();
+    void level4();
+    void level5();
+    void level6();
+    void level7();
 
 private:
     Ui::MainMenu *ui;
