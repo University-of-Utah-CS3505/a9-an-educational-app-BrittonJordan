@@ -30,7 +30,7 @@
      <string notr="true">background-color: rgb(204, 193, 177);</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="topMenu">
      <widget class="QLabel" name="gameTitleLabel">
@@ -179,6 +179,21 @@
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="translateMenu">
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>249</x>
+        <y>250</y>
+        <width>191</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>translate page </string>
+      </property>
+     </widget>
+    </widget>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
@@ -186,10 +201,10 @@
       <x>10</x>
       <y>170</y>
       <width>111</width>
-      <height>71</height>
+      <height>158</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="menuButtonsLayout" stretch="0,0">
+    <layout class="QVBoxLayout" name="menuButtonsLayout" stretch="0,0,0">
      <property name="spacing">
       <number>20</number>
      </property>
@@ -229,6 +244,16 @@
        </property>
        <property name="text">
         <string>Study!</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="translateButton">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(204, 193, 177);</string>
+       </property>
+       <property name="text">
+        <string>Translate</string>
        </property>
       </widget>
      </item>

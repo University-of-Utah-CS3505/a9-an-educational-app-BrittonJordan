@@ -55,6 +55,7 @@ void MainMenu::level1(){
     morseModel.generateLevel(1);
 
     ui->studyLevelLabel->setText("Study Level: 1");
+    //ui->studyMorseLabel->setText();
 }
 
 void MainMenu::level2(){
