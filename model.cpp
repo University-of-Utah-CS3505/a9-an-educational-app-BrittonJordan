@@ -9,6 +9,7 @@ model::model(QObject *parent) : QObject(parent), currentQuestion(0)
 }
 
 void model::generateLevel(int levelNumber){
+
     QVector<QString> wordList = model::readWordList(levelNumber);
     generateBasics(wordList);
     // Then increase word size
