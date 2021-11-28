@@ -2,6 +2,7 @@
 #define MAINMENU_H
 
 #include <QMainWindow>
+#include "model.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainMenu; }
@@ -28,5 +29,6 @@ private slots:
 
 private:
     Ui::MainMenu *ui;
+    model morseModel;
 };
 #endif // MAINMENU_H

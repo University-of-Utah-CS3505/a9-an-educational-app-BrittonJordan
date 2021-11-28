@@ -3,20 +3,25 @@
 
 #include <QObject>
 #include <QStack>
+#include "studyquestion.h"
+#include "morsetranslator.h"
 
 class model : public QObject
 {
     Q_OBJECT
-    QStack<std::string> levelLetters;
-    QStack<std::string> levelCodes;
-    std::string currentCorrectAnswer;
+    QVector<StudyQuestion> level;
+    int currentQuestion;
+    MorseTranslator translator;
+
+    void generateBasics(QVector<QString> wordList);
+    static QVector<QString> readWordList(int levelNumber);
 
 public:
     explicit model(QObject *parent = nullptr);
 
-    void generateLevel(int level);
-    std::string getNextQuestion();
-    bool isCorrectAnswer(std::string answer);
+    void generateLevel(int levelNumber);
+    StudyQuestion getNextQuestion();
+    bool isCorrectAnswer(QString answer);
 
 signals:
 

@@ -50,7 +50,8 @@ void MainMenu::on_menuButton_clicked()
 }
 
 void MainMenu::level1(){
-
+    std::cout<<"Level 1 Begins"<<std::endl;
+    morseModel.generateLevel(1);
 }
 
 void MainMenu::level2(){

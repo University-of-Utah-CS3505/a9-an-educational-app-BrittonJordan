@@ -13,13 +13,15 @@ SOURCES += \
     mainmenu.cpp \
     model.cpp \
     morsetranslator.cpp \
-    morsetranslatortests.cpp
+    morsetranslatortests.cpp \
+    studyquestion.cpp
 
 HEADERS += \
     mainmenu.h \
     model.h \
     morsetranslator.h \
-    morsetranslatortests.h
+    morsetranslatortests.h \
+    studyquestion.h
 
 FORMS += \
     mainmenu.ui

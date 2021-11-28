@@ -1,3 +1,8 @@
+A
+B
+C
+D
+E
 ACED
 BEAD
 CADE
@@ -7,8 +12,3 @@ BED
 AD
 EA
 ED
-A
-B
-C
-D
-E
