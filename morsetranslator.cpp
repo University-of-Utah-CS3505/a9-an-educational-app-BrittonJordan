@@ -19,6 +19,7 @@ MorseTranslator::MorseTranslator(){
 }
 
 QString MorseTranslator::englishToMorse(QString english){
+    english = english.toLower();
     QString morse = "";
     for (int i = 0; i < english.length(); i++){
         if (english[i] == ' '){
@@ -30,7 +31,7 @@ QString MorseTranslator::englishToMorse(QString english){
                     morse.append(" ");
             }
             else
-                qWarning("Invalid character; only lowercase letters [a-z] are permitted.");
+                qWarning("Invalid character.");
         }
     }
     return morse;
