@@ -21,6 +21,7 @@ public:
 
     void generateLevel(int levelNumber);
     StudyQuestion getNextQuestion();
+    StudyQuestion getCurrentQuestion();
     bool isCorrectAnswer(QString answer);
 
 signals:

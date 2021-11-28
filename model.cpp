@@ -4,13 +4,11 @@
 #include <QDebug>
 #include "morsetranslator.h"
 
-model::model(QObject *parent) : QObject(parent)
+model::model(QObject *parent) : QObject(parent), currentQuestion(0)
 {
-
 }
 
 void model::generateLevel(int levelNumber){
-    // First generate single character questions with title "Learning new letters" or similar
     QVector<QString> wordList = model::readWordList(levelNumber);
     generateBasics(wordList);
     // Then increase word size
@@ -19,7 +17,7 @@ void model::generateLevel(int levelNumber){
 }
 
 void model::generateBasics(QVector<QString> wordList){
-    int numberOfQuestions = 20;
+    int numberOfQuestions = 10;
 
     // Remove non-basic strings from the word list
     for(QString& word : wordList){
@@ -67,14 +65,14 @@ void model::generateBasics(QVector<QString> wordList){
         }
         numberOfQuestions--;
     }
-
-    // open the correct file
-    // read the first 5 characters of the file only
-    // generate numberOfQuestions question
 }
 
 StudyQuestion model::getNextQuestion(){
     currentQuestion++;
+    return level[currentQuestion];
+}
+
+StudyQuestion model::getCurrentQuestion(){
     return level[currentQuestion];
 }
 
