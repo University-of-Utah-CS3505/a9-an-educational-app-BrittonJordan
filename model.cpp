@@ -13,7 +13,8 @@ model::model(QObject *parent) : QObject(parent), currentQuestion(0)
  * @param levelNumber
  */
 void model::generateLevel(int levelNumber){
-
+    QVector<StudyQuestion> newLevel;
+    this->level = newLevel;
     QVector<QString> wordList = model::readWordList(levelNumber);
     generateBasics(wordList);
     generateStudyQuestion(wordList);
