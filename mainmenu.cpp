@@ -42,11 +42,13 @@ MainMenu::~MainMenu()
 void MainMenu::on_studyButton_clicked()
 {
     ui->menuStack->setCurrentIndex(1); // Switch to Study menu
+    ui->studyMorseLabel->clear();
 }
 
 void MainMenu::on_menuButton_clicked()
 {
     ui->menuStack->setCurrentIndex(0); // Switch to Main Menu
+    ui->studyMorseLabel->clear();
 }
 
 void MainMenu::level1(){
@@ -55,7 +57,9 @@ void MainMenu::level1(){
     morseModel.generateLevel(1);
 
     ui->studyLevelLabel->setText("Study Level: 1");
-    //ui->studyMorseLabel->setText();
+
+    StudyQuestion question = morseModel.getCurrentQuestion();
+    ui->studyMorseLabel->setText(question.getQuestion());
 }
 
 void MainMenu::level2(){
@@ -64,6 +68,9 @@ void MainMenu::level2(){
     morseModel.generateLevel(2);
 
     ui->studyLevelLabel->setText("Study Level: 2");
+
+    StudyQuestion question = morseModel.getCurrentQuestion();
+    ui->studyMorseLabel->setText(question.getQuestion());
 }
 
 void MainMenu::level3(){
@@ -72,6 +79,9 @@ void MainMenu::level3(){
     morseModel.generateLevel(3);
 
     ui->studyLevelLabel->setText("Study Level: 3");
+
+    StudyQuestion question = morseModel.getCurrentQuestion();
+    ui->studyMorseLabel->setText(question.getQuestion());
 }
 
 void MainMenu::level4(){
@@ -80,6 +90,9 @@ void MainMenu::level4(){
     morseModel.generateLevel(4);
 
     ui->studyLevelLabel->setText("Study Level: 4");
+
+    StudyQuestion question = morseModel.getCurrentQuestion();
+    ui->studyMorseLabel->setText(question.getQuestion());
 }
 
 void MainMenu::level5(){
@@ -88,6 +101,9 @@ void MainMenu::level5(){
     morseModel.generateLevel(5);
 
     ui->studyLevelLabel->setText("Study Level: 5");
+
+    StudyQuestion question = morseModel.getCurrentQuestion();
+    ui->studyMorseLabel->setText(question.getQuestion());
 }
 
 void MainMenu::level6(){
@@ -96,6 +112,9 @@ void MainMenu::level6(){
     morseModel.generateLevel(6);
 
     ui->studyLevelLabel->setText("Study Level: 6");
+
+    StudyQuestion question = morseModel.getCurrentQuestion();
+    ui->studyMorseLabel->setText(question.getQuestion());
 }
 
 void MainMenu::level7(){
@@ -104,5 +123,8 @@ void MainMenu::level7(){
     //morseModel.generateLevel(7);
 
     ui->studyLevelLabel->setText("Study Level: 7");
+
+//    StudyQuestion question = morseModel.getCurrentQuestion();
+//    ui->studyMorseLabel->setText(question.getQuestion());
 }
 
