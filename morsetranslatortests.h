@@ -19,6 +19,9 @@ private:
     // Edge case tests
     void leadingWhitespaceRemoved();
     void trailingWhitespaceRemoved();
+    void invalidCharacterIgnored();
+    void forwardSlashTreatedTheSame();
+    void noSpacesSurroundingSlash();
 
 public:
     MorseTranslatorTests();

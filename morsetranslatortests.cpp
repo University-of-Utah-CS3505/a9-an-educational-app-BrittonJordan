@@ -24,6 +24,9 @@ void MorseTranslatorTests::runTests(){
     std::cout << "-----------------" << std::endl;
     leadingWhitespaceRemoved();
     trailingWhitespaceRemoved();
+    invalidCharacterIgnored();
+    forwardSlashTreatedTheSame();
+    noSpacesSurroundingSlash();
 }
 
 void MorseTranslatorTests::englishCharToMorse(){
@@ -116,11 +119,46 @@ void MorseTranslatorTests::trailingWhitespaceRemoved(){
     QString englishResult = translator.morseToEnglish(morse);
     QString morseResult = translator.englishToMorse(english);
     if ("apple" == englishResult && ".- .--. .--. .-.. ." == morseResult)
-        std::cout << "trailingWhitespacePreserved: \nPASS" << std::endl;
+        std::cout << "trailingWhitespaceRemoved: \nPASS" << std::endl;
     else {
-        std::cout << "trailingWhitespacePreserved: \nFAIL" << std::endl;
-        std::cout << "Expected Morse: \"" << morse.toStdString() << "\" actual: \"" << morseResult.toStdString() << "\"" << std::endl;
-        std::cout << "Expected English: \"" << english.toStdString() << "\" actual: \"" << englishResult.toStdString() << "\"" << std::endl;
+        std::cout << "trailingWhitespaceRemoved: \nFAIL" << std::endl;
+        std::cout << "Expected Morse: \".- .--. .--. .-.. .\" actual: \"" << morseResult.toStdString() << "\"" << std::endl;
+        std::cout << "Expected English: \"apple\" actual: \"" << englishResult.toStdString() << "\"" << std::endl;
+        std::cout << std::endl;
+    }
+}
+
+void MorseTranslatorTests::invalidCharacterIgnored(){
+    QString morse = ".- .--. ----- .--. .-.. .";
+    QString englishResult = translator.morseToEnglish(morse);
+    if (englishResult == "apple")
+        std::cout << "invalidCharacterIgnored: \nPASS" << std::endl;
+    else {
+        std::cout << " invalidCharacterIgnored: \nFAIL" << std::endl;
+        std::cout << "Expected English: \"apple\"" << " actual: \"" << englishResult.toStdString() << "\"" << std::endl;
+        std::cout << std::endl;
+    }
+}
+
+
+void MorseTranslatorTests::forwardSlashTreatedTheSame(){
+    QString englishSentence = translator.morseToEnglish("- .... . \\ --.- ..- .. -.-. -.- \\ -... .-. --- .-- -. \\ ..-. --- -..- \\ .--- ..- -- .--. . -.. \\ --- ...- . .-. \\ - .... . \\ .-.. .- --.. -.-- \\ -.. --- --.");
+    if (englishSentence == "the quick brown fox jumped over the lazy dog")
+        std::cout << "noSpacesSurroundingSlash: \nPASS" << std::endl;
+    else {
+        std::cout << "noSpacesSurroundingSlash: \nFAIL" << std::endl;
+        std::cout << "Expected: \"the quick brown fox jumped over the lazy dog\" actual: \"" << englishSentence.toStdString() << "\"" << std::endl;
+        std::cout << std::endl;
+    }
+}
+
+void MorseTranslatorTests::noSpacesSurroundingSlash(){
+    QString englishSentence = translator.morseToEnglish("- .... ./ --.- ..- .. -.-. -.- /-... .-. --- .-- -./..-. --- -..- / .--- ..- -- .--. . -.. / --- ...- . .-. / - .... . / .-.. .- --.. -.-- / -.. --- --.");
+    if (englishSentence == "the quick brown fox jumped over the lazy dog")
+        std::cout << "noSpacesSurroundingSlash: \nPASS" << std::endl;
+    else {
+        std::cout << "noSpacesSurroundingSlash: \nFAIL" << std::endl;
+        std::cout << "Expected: \"the quick brown fox jumped over the lazy dog\" actual: \"" << englishSentence.toStdString() << "\"" << std::endl;
         std::cout << std::endl;
     }
 }
