@@ -8,13 +8,27 @@ model::model(QObject *parent) : QObject(parent), currentQuestion(0)
 {
 }
 
+/**
+ * @brief model::generateLevel Generates a level of StudyQuestions, modifying the level instance
+ * @param levelNumber
+ */
 void model::generateLevel(int levelNumber){
 
     QVector<QString> wordList = model::readWordList(levelNumber);
     generateBasics(wordList);
-    // Then increase word size
+    generateStudyQuestion(wordList);
+}
 
-    // etc.
+void model::generateStudyQuestion(QVector<QString> wordList){
+    int numberOfQuestions = 10;
+
+    // Remove basic strings from word list
+    for(QString& word : wordList){
+        if(word.length() == 1){
+            wordList.removeAll(word);
+        }
+    }
+    generateRandomQuestions(numberOfQuestions, wordList);
 }
 
 void model::generateBasics(QVector<QString> wordList){
@@ -42,26 +56,30 @@ void model::generateBasics(QVector<QString> wordList){
         numberOfQuestions--;
     }
 
-    // Create random questions for the new letters
-    int numLetters = wordList.length() - 1;
+    // Create random single-character questions
+    generateRandomQuestions(numberOfQuestions, wordList);
+}
+
+void model::generateRandomQuestions(int numberOfQuestions, QVector<QString> wordList){
+    int numWords = wordList.length() - 1;
     while(numberOfQuestions > 0){
-        int randIndex = rand() % numLetters;
-        QString currLetter = wordList[randIndex];
-        QString currCode = translator.englishToMorse(currLetter);
+        int randIndex = rand() % numWords;
+        QString currWord = wordList[randIndex];
+        QString currCode = translator.englishToMorse(currWord);
 
         int randType = rand() % 2;
         if(randType == 0){
             QString question = "What is the Morse code representation of '";
-            question.append(currLetter);
+            question.append(currWord);
             question.append("'");
             StudyQuestion newQuestion(question, currCode);
             level.append(newQuestion);
         }
         else {
-            QString question = "What letter does '";
+            QString question = "What does '";
             question.append(currCode);
             question.append("' represent?");
-            StudyQuestion newQuestion(question, currLetter);
+            StudyQuestion newQuestion(question, currWord);
             level.append(newQuestion);
         }
         numberOfQuestions--;

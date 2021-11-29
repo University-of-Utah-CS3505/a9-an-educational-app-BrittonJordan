@@ -14,6 +14,8 @@ class model : public QObject
     MorseTranslator translator;
 
     void generateBasics(QVector<QString> wordList);
+    void generateStudyQuestion(QVector<QString> wordList);
+    void generateRandomQuestions(int numberOfQuestions, QVector<QString> wordList);
     static QVector<QString> readWordList(int levelNumber);
 
 public:
