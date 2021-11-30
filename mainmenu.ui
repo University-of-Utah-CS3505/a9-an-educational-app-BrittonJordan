@@ -30,7 +30,7 @@
      <string notr="true">background-color: rgb(204, 193, 177);</string>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="topMenu">
      <widget class="QLabel" name="gameTitleLabel">
@@ -142,7 +142,7 @@
      <widget class="QLabel" name="studyLevelLabel">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>190</x>
         <y>10</y>
         <width>241</width>
         <height>16</height>
@@ -158,9 +158,9 @@
      <widget class="QTextEdit" name="userInput">
       <property name="geometry">
        <rect>
-        <x>80</x>
+        <x>30</x>
         <y>500</y>
-        <width>551</width>
+        <width>501</width>
         <height>70</height>
        </rect>
       </property>
@@ -168,14 +168,44 @@
      <widget class="QLabel" name="studyMorseLabel">
       <property name="geometry">
        <rect>
-        <x>140</x>
-        <y>110</y>
+        <x>120</x>
+        <y>150</y>
         <width>401</width>
         <height>241</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <property name="lineWidth">
+       <number>5</number>
+      </property>
       <property name="text">
        <string>area for morse code level study here</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="nextQuestionButton">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>500</y>
+        <width>111</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Next Question</string>
       </property>
      </widget>
     </widget>
