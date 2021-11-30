@@ -8,6 +8,7 @@ MainMenu::MainMenu(QWidget *parent)
 {
     ui->setupUi(this);
     ui->menuStack->setCurrentIndex(0); // Start on the Main Menu
+    ui->helpPicture->setVisible(false);
 
     // When translating, default to English -> Morse
     encode = true;
@@ -35,9 +36,6 @@ MainMenu::MainMenu(QWidget *parent)
 
     //Level 6 Connect
     connect(ui->level6Button, &QPushButton::clicked, this, &MainMenu::level6);
-
-    //Level 7 Connect
-    connect(ui->level7Button, &QPushButton::clicked, this, &MainMenu::level7);
 
     //isNextQuestion
     connect(&morseModel, &model::goToStudyMenu, this, &MainMenu::on_studyButton_clicked);
@@ -80,9 +78,6 @@ void MainMenu::on_nextQuestionButton_clicked(){
         questionCounter++;
         ui->questionNumber->setText("Question Number: " +QString::number(questionCounter));
 
-        scoreCounter++;
-        ui->scoreNumber->setText("Study Score: " +QString::number(scoreCounter));
-
         ui->userInput->clear();
 
         morseModel.getNextQuestion();
@@ -110,6 +105,13 @@ void MainMenu::on_previousQuestionButton_clicked(){
 
         ui->userInput->clear();
     }
+}
+
+void MainMenu::on_helpButton_clicked(){
+    if(ui->helpPicture->isVisible())
+        ui->helpPicture->setVisible(false);
+    else
+        ui->helpPicture->setVisible(true);
 }
 
 void MainMenu::level1(){
@@ -176,17 +178,6 @@ void MainMenu::level6(){
 
     StudyQuestion question = morseModel.getCurrentQuestion();
     ui->studyMorseLabel->setText(question.getQuestion());
-}
-
-void MainMenu::level7(){
-    std::cout<<"Level 7 Begins"<<std::endl;
-    ui->menuStack->setCurrentIndex(2);
-    //morseModel.generateLevel(7);
-
-    ui->studyLevelLabel->setText("Study Level: 7");
-
-//    StudyQuestion question = morseModel.getCurrentQuestion();
-//    ui->studyMorseLabel->setText(question.getQuestion());
 }
 
 

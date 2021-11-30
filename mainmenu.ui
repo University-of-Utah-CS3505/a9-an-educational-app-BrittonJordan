@@ -30,7 +30,7 @@
      <string notr="true">background-color: rgb(204, 193, 177);</string>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="topMenu">
      <widget class="QLabel" name="gameTitleLabel">
@@ -81,22 +81,15 @@
        <rect>
         <x>70</x>
         <y>80</y>
-        <width>160</width>
-        <height>241</height>
+        <width>221</width>
+        <height>411</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="levelButtonsLayout">
+      <layout class="QVBoxLayout" name="levelButtonsLayoutA">
        <item>
         <widget class="QPushButton" name="level1Button">
          <property name="text">
           <string>Level 1: A - E</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="level2Button">
-         <property name="text">
-          <string>Level 2: F - J</string>
          </property>
         </widget>
        </item>
@@ -108,6 +101,32 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="level5Button">
+         <property name="text">
+          <string>Level 5: V - Z</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>80</y>
+        <width>211</width>
+        <height>411</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="levelButtonsLayoutB">
+       <item>
+        <widget class="QPushButton" name="level2Button">
+         <property name="text">
+          <string>Level 2: F - J</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="level4Button">
          <property name="text">
           <string>Level 4: Q - U</string>
@@ -115,23 +134,9 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="level5Button">
-         <property name="text">
-          <string>Level 5: V - Z</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QPushButton" name="level6Button">
          <property name="text">
           <string>Level 6: Mastery</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="level7Button">
-         <property name="text">
-          <string>Level 7: Random</string>
          </property>
         </widget>
        </item>
@@ -158,25 +163,30 @@
      <widget class="QTextEdit" name="userInput">
       <property name="geometry">
        <rect>
-        <x>150</x>
+        <x>140</x>
         <y>500</y>
         <width>381</width>
         <height>70</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
      </widget>
      <widget class="QLabel" name="studyMorseLabel">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>150</y>
+        <x>30</x>
+        <y>180</y>
         <width>601</width>
         <height>241</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>20</pointsize>
+        <pointsize>17</pointsize>
        </font>
       </property>
       <property name="frameShape">
@@ -198,7 +208,7 @@
      <widget class="QPushButton" name="nextQuestionButton">
       <property name="geometry">
        <rect>
-        <x>540</x>
+        <x>530</x>
         <y>500</y>
         <width>121</width>
         <height>71</height>
@@ -212,7 +222,7 @@
       <property name="geometry">
        <rect>
         <x>230</x>
-        <y>400</y>
+        <y>430</y>
         <width>191</width>
         <height>16</height>
        </rect>
@@ -224,28 +234,12 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="scoreNumber">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>120</y>
-        <width>161</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Study Score: 0</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
      <widget class="QPushButton" name="previousQuestionButton">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>500</y>
-        <width>131</width>
+        <width>121</width>
         <height>71</height>
        </rect>
       </property>
@@ -253,6 +247,49 @@
        <string>Previous Question</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="helpButton">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>51</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Help</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="helpPicture">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>30</y>
+        <width>221</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <property name="text">
+       <string>help for specific level letters</string>
+      </property>
+     </widget>
+     <zorder>studyLevelLabel</zorder>
+     <zorder>userInput</zorder>
+     <zorder>studyMorseLabel</zorder>
+     <zorder>nextQuestionButton</zorder>
+     <zorder>questionNumber</zorder>
+     <zorder>previousQuestionButton</zorder>
+     <zorder>helpPicture</zorder>
+     <zorder>helpButton</zorder>
     </widget>
     <widget class="QWidget" name="translateMenu">
      <widget class="QLabel" name="translateLabel">
@@ -305,9 +342,9 @@
          <colorrole role="Button">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>204</red>
+            <green>193</green>
+            <blue>177</blue>
            </color>
           </brush>
          </colorrole>
@@ -377,18 +414,18 @@
          <colorrole role="Base">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>204</red>
+            <green>193</green>
+            <blue>177</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>204</red>
+            <green>193</green>
+            <blue>177</blue>
            </color>
           </brush>
          </colorrole>
@@ -451,9 +488,9 @@
          <colorrole role="Button">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>204</red>
+            <green>193</green>
+            <blue>177</blue>
            </color>
           </brush>
          </colorrole>
@@ -523,18 +560,18 @@
          <colorrole role="Base">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>204</red>
+            <green>193</green>
+            <blue>177</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>204</red>
+            <green>193</green>
+            <blue>177</blue>
            </color>
           </brush>
          </colorrole>
@@ -597,9 +634,9 @@
          <colorrole role="Button">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>204</red>
+            <green>193</green>
+            <blue>177</blue>
            </color>
           </brush>
          </colorrole>
@@ -669,18 +706,18 @@
          <colorrole role="Base">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>204</red>
+            <green>193</green>
+            <blue>177</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>204</red>
+            <green>193</green>
+            <blue>177</blue>
            </color>
           </brush>
          </colorrole>
@@ -763,9 +800,9 @@
          <colorrole role="Button">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>204</red>
+            <green>193</green>
+            <blue>177</blue>
            </color>
           </brush>
          </colorrole>
@@ -835,18 +872,18 @@
          <colorrole role="Base">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>204</red>
+            <green>193</green>
+            <blue>177</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>204</red>
+            <green>193</green>
+            <blue>177</blue>
            </color>
           </brush>
          </colorrole>
@@ -909,9 +946,9 @@
          <colorrole role="Button">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>204</red>
+            <green>193</green>
+            <blue>177</blue>
            </color>
           </brush>
          </colorrole>
@@ -981,18 +1018,18 @@
          <colorrole role="Base">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>204</red>
+            <green>193</green>
+            <blue>177</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>204</red>
+            <green>193</green>
+            <blue>177</blue>
            </color>
           </brush>
          </colorrole>
@@ -1055,9 +1092,9 @@
          <colorrole role="Button">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>204</red>
+            <green>193</green>
+            <blue>177</blue>
            </color>
           </brush>
          </colorrole>
@@ -1127,18 +1164,18 @@
          <colorrole role="Base">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>204</red>
+            <green>193</green>
+            <blue>177</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>204</red>
+            <green>193</green>
+            <blue>177</blue>
            </color>
           </brush>
          </colorrole>
@@ -1244,7 +1281,7 @@
         <string notr="true">background-color: rgb(204, 193, 177);</string>
        </property>
        <property name="text">
-        <string>Study!</string>
+        <string>Study</string>
        </property>
       </widget>
      </item>
