@@ -30,10 +30,18 @@ private slots:
     void level6();
     void level7();
 
+    void on_switchEncodeDecode_clicked();
+
+    void updateTranslation();
+
+
 private:
     Ui::MainMenu *ui;
     model morseModel;
     int scoreCounter = 0;
     int questionCounter = 1;
+
+    MorseTranslator translate;
+    bool encode;
 };
 #endif // MAINMENU_H

@@ -9,6 +9,12 @@ MainMenu::MainMenu(QWidget *parent)
     ui->setupUi(this);
     ui->menuStack->setCurrentIndex(0); // Start on the Main Menu
 
+    // When translating, default to English -> Morse
+    encode = true;
+
+    ui->inputToTranslate->setStyleSheet("background-color: #f5e9d7");
+    ui->translateResult->setStyleSheet("background-color: #f5e9d7");
+
     MorseTranslatorTests test;
     test.runTests();
 
@@ -35,6 +41,8 @@ MainMenu::MainMenu(QWidget *parent)
 
     //isNextQuestion
     connect(&morseModel, &model::goToStudyMenu, this, &MainMenu::on_studyButton_clicked);
+
+    connect(ui->inputToTranslate, &QTextEdit::textChanged, this, &MainMenu::updateTranslation);
 }
 
 MainMenu::~MainMenu()
@@ -179,5 +187,26 @@ void MainMenu::level7(){
 
 //    StudyQuestion question = morseModel.getCurrentQuestion();
 //    ui->studyMorseLabel->setText(question.getQuestion());
+}
+
+
+void MainMenu::on_switchEncodeDecode_clicked()
+{
+    if (encode)
+        encode = false;
+    else
+        encode = true;
+
+    QString untranslated = ui->inputToTranslate->toPlainText();
+    QString translated = ui->translateResult->toPlainText();
+    ui->inputToTranslate->setText(translated);
+}
+
+void MainMenu::updateTranslation(){
+    QString toTranslate = ui->inputToTranslate->toPlainText();
+    if (encode)
+        ui->translateResult->setText(translate.englishToMorse(toTranslate));
+    else
+        ui->translateResult->setText(translate.morseToEnglish(toTranslate));
 }
 
