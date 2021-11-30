@@ -158,9 +158,9 @@
      <widget class="QTextEdit" name="userInput">
       <property name="geometry">
        <rect>
-        <x>30</x>
+        <x>150</x>
         <y>500</y>
-        <width>501</width>
+        <width>381</width>
         <height>70</height>
        </rect>
       </property>
@@ -200,7 +200,7 @@
        <rect>
         <x>540</x>
         <y>500</y>
-        <width>111</width>
+        <width>121</width>
         <height>71</height>
        </rect>
       </property>
@@ -208,20 +208,49 @@
        <string>Next Question</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="questionNumber">
       <property name="geometry">
        <rect>
-        <x>210</x>
-        <y>40</y>
+        <x>230</x>
+        <y>400</y>
         <width>191</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>Question Number: 0</string>
+       <string>Question Number: 1</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="scoreNumber">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>120</y>
+        <width>161</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Study Score: 0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="previousQuestionButton">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>500</y>
+        <width>131</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Previous Question</string>
       </property>
      </widget>
     </widget>

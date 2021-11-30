@@ -20,6 +20,7 @@ private slots:
     void on_studyButton_clicked();
     void on_menuButton_clicked();
     void on_nextQuestionButton_clicked();
+    void on_previousQuestionButton_clicked();
     void level1();
     void level2();
     void level3();
@@ -31,5 +32,7 @@ private slots:
 private:
     Ui::MainMenu *ui;
     model morseModel;
+    int scoreCounter = 0;
+    int questionCounter = 1;
 };
 #endif // MAINMENU_H

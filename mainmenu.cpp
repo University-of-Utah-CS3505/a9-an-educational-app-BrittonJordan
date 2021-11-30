@@ -46,29 +46,55 @@ void MainMenu::on_studyButton_clicked()
 {
     ui->menuStack->setCurrentIndex(1); // Switch to Study menu
     ui->studyMorseLabel->clear();
+
+    questionCounter = 1;
 }
 
 void MainMenu::on_menuButton_clicked()
 {
     ui->menuStack->setCurrentIndex(0); // Switch to Main Menu
     ui->studyMorseLabel->clear();
+
+    questionCounter = 1;
 }
 
 void MainMenu::on_nextQuestionButton_clicked(){
-//    if(morseModel.isCorrectAnswer(ui->userInput->toPlainText())){
-//        morseModel.getNextQuestion();
-//        StudyQuestion question = morseModel.getCurrentQuestion();
-//        ui->studyMorseLabel->setText(question.getQuestion());
-//        ui->userInput->clear();
-//    }
-//    else{
-//        std::cout << "wrong" << std::endl;
-//    }
+    if(morseModel.isCorrectAnswer(ui->userInput->toPlainText())){
+        std::cout << "correct" << std::endl;
 
-    morseModel.getNextQuestion();
-    StudyQuestion question = morseModel.getCurrentQuestion();
-    ui->studyMorseLabel->setText(question.getQuestion());
-    ui->userInput->clear();
+        questionCounter++;
+        ui->questionNumber->setText("Question Number: " +QString::number(questionCounter));
+
+        scoreCounter++;
+        ui->scoreNumber->setText("Study Score: " +QString::number(scoreCounter));
+
+        ui->userInput->clear();
+
+        morseModel.getNextQuestion();
+        StudyQuestion question = morseModel.getCurrentQuestion();
+        ui->studyMorseLabel->setText(question.getQuestion());
+    }
+    else{
+        std::cout << "wrong" << std::endl;
+    }
+
+//    morseModel.getNextQuestion();
+//    StudyQuestion question = morseModel.getCurrentQuestion();
+//    ui->studyMorseLabel->setText(question.getQuestion());
+//    ui->userInput->clear();
+}
+
+void MainMenu::on_previousQuestionButton_clicked(){
+    if(questionCounter-1 != 0){
+        morseModel.getPreviousQuestion();
+        StudyQuestion question = morseModel.getCurrentQuestion();
+        ui->studyMorseLabel->setText(question.getQuestion());
+
+        questionCounter--;
+        ui->questionNumber->setText("Question Number: " +QString::number(questionCounter));
+
+        ui->userInput->clear();
+    }
 }
 
 void MainMenu::level1(){

@@ -108,6 +108,11 @@ StudyQuestion model::getNextQuestion(){
     }
 }
 
+StudyQuestion model::getPreviousQuestion(){
+    currentQuestion--;
+    return level[currentQuestion];
+}
+
 StudyQuestion model::getCurrentQuestion(){
     return level[currentQuestion];
 }

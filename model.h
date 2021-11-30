@@ -23,6 +23,7 @@ public:
 
     void generateLevel(int levelNumber);
     StudyQuestion getNextQuestion();
+    StudyQuestion getPreviousQuestion();
     StudyQuestion getCurrentQuestion();
     bool isCorrectAnswer(QString answer);
 
