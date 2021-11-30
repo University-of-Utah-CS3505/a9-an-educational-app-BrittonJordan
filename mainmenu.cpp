@@ -58,6 +58,13 @@ void MainMenu::on_menuButton_clicked()
     questionCounter = 1;
 }
 
+void MainMenu::on_translateButton_clicked(){
+    ui->menuStack->setCurrentIndex(3);
+    ui->studyMorseLabel->clear();
+
+    questionCounter = 1;
+}
+
 void MainMenu::on_nextQuestionButton_clicked(){
     if(morseModel.isCorrectAnswer(ui->userInput->toPlainText())){
         std::cout << "correct" << std::endl;
