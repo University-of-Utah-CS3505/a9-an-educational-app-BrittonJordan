@@ -7,4 +7,7 @@
         <file>Level5.txt</file>
         <file>Level6.txt</file>
     </qresource>
+    <qresource prefix="/Fonts">
+        <file>armalite.ttf</file>
+    </qresource>
 </RCC>
