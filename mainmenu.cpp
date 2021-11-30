@@ -1,6 +1,7 @@
 #include "mainmenu.h"
 #include "ui_mainmenu.h"
 #include "morsetranslatortests.h"
+#include <QFontDatabase>
 
 MainMenu::MainMenu(QWidget *parent)
     : QMainWindow(parent)
@@ -10,6 +11,36 @@ MainMenu::MainMenu(QWidget *parent)
     ui->menuStack->setCurrentIndex(0); // Start on the Main Menu
     ui->helpPicture->setVisible(false);
 
+    //Font stuff
+    int id = QFontDatabase::addApplicationFont(":/Fonts/armalite.ttf");
+    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
+    QFont armyStyle(family);
+
+    QFont armyStyle28(family);
+    armyStyle28.setPointSize(28);
+    QFont armyStyle22(family);
+    armyStyle22.setPointSize(22);
+    QFont armyStyle14(family);
+    armyStyle14.setPointSize(14);
+    //Font change on buttons
+    ui->level1Button->setFont(armyStyle);
+    ui->level2Button->setFont(armyStyle);
+    ui->level3Button->setFont(armyStyle);
+    ui->level4Button->setFont(armyStyle);
+    ui->level5Button->setFont(armyStyle);
+    ui->level6Button->setFont(armyStyle);
+    ui->menuButton->setFont(armyStyle14);
+    ui->studyButton->setFont(armyStyle14);
+    ui->translateButton->setFont(armyStyle14);
+    ui->helpButton->setFont(armyStyle);
+    ui->nextQuestionButton->setFont(armyStyle);
+    ui->previousQuestionButton->setFont(armyStyle);
+    //font change for labels
+    ui->gameTitleLabel->setFont(armyStyle28);
+    ui->studyLabel->setFont(armyStyle22);
+    ui->studyLevelLabel->setFont(armyStyle22);
+    ui->questionNumber->setFont(armyStyle22);
+    ui->translateLabel->setFont(armyStyle22);
     // When translating, default to English -> Morse
     encode = true;
 

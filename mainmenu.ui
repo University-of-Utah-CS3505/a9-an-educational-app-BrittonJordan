@@ -30,21 +30,21 @@
      <string notr="true">background-color: rgb(204, 193, 177);</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="topMenu">
      <widget class="QLabel" name="gameTitleLabel">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>40</x>
         <y>60</y>
-        <width>221</width>
-        <height>31</height>
+        <width>571</width>
+        <height>151</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>25</pointsize>
        </font>
       </property>
       <property name="text">
@@ -244,7 +244,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Previous Question</string>
+       <string>Last Question</string>
       </property>
      </widget>
      <widget class="QPushButton" name="helpButton">
@@ -1238,7 +1238,7 @@
      <rect>
       <x>10</x>
       <y>170</y>
-      <width>111</width>
+      <width>121</width>
       <height>158</height>
      </rect>
     </property>
