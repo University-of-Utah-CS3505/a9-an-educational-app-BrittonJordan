@@ -51,6 +51,18 @@ void MainMenu::on_menuButton_clicked()
     ui->studyMorseLabel->clear();
 }
 
+void MainMenu::on_nextQuestionButton_clicked(){
+    if(morseModel.isCorrectAnswer(ui->userInput->toPlainText())){
+        morseModel.getNextQuestion();
+        StudyQuestion question = morseModel.getCurrentQuestion();
+        ui->studyMorseLabel->setText(question.getQuestion());
+        ui->userInput->clear();
+    }
+    else{
+        std::cout << "wrong" << std::endl;
+    }
+}
+
 void MainMenu::level1(){
     std::cout<<"Level 1 Begins"<<std::endl;
     ui->menuStack->setCurrentIndex(2);

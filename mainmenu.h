@@ -19,6 +19,7 @@ public:
 private slots:
     void on_studyButton_clicked();
     void on_menuButton_clicked();
+    void on_nextQuestionButton_clicked();
     void level1();
     void level2();
     void level3();
