@@ -27,7 +27,7 @@ public:
     bool isCorrectAnswer(QString answer);
 
 signals:
-
+    void goToStudyMenu();
 
 };
 

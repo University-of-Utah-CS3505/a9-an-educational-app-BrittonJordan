@@ -88,6 +88,10 @@ void model::generateRandomQuestions(int numberOfQuestions, QVector<QString> word
 }
 
 StudyQuestion model::getNextQuestion(){
+    if(currentQuestion == level.length() - 1){
+        emit goToStudyMenu();
+    }
+
     currentQuestion++;
     return level[currentQuestion];
 }
