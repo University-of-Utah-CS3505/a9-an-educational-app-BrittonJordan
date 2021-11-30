@@ -61,7 +61,8 @@ void model::generateBasics(QVector<QString> wordList){
     }
 
     // Create random single-character questions
-    generateRandomQuestions(numberOfQuestions, allLetters);
+    if(allLetters.length() > 0)
+        generateRandomQuestions(numberOfQuestions, allLetters);
 }
 
 void model::generateRandomQuestions(int numberOfQuestions, QVector<QString> wordList){
