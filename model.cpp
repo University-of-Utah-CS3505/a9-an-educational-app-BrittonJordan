@@ -13,6 +13,7 @@ model::model(QObject *parent) : QObject(parent), currentQuestion(0)
  * @param levelNumber
  */
 void model::generateLevel(int levelNumber){
+    currentQuestion = 0;
     QVector<StudyQuestion> newLevel;
     this->level = newLevel;
     QVector<QString> wordList = model::readWordList(levelNumber);
@@ -90,10 +91,13 @@ void model::generateRandomQuestions(int numberOfQuestions, QVector<QString> word
 StudyQuestion model::getNextQuestion(){
     if(currentQuestion == level.length() - 1){
         emit goToStudyMenu();
+        StudyQuestion blank("blank", "blank");
+        return blank;
     }
-
-    currentQuestion++;
-    return level[currentQuestion];
+    else{
+        currentQuestion++;
+        return level[currentQuestion];
+    }
 }
 
 StudyQuestion model::getCurrentQuestion(){
