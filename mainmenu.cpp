@@ -32,6 +32,9 @@ MainMenu::MainMenu(QWidget *parent)
 
     //Level 7 Connect
     connect(ui->level7Button, &QPushButton::clicked, this, &MainMenu::level7);
+
+    //isNextQuestion
+    connect(&morseModel, &model::goToStudyMenu, this, &MainMenu::on_studyButton_clicked);
 }
 
 MainMenu::~MainMenu()
@@ -61,6 +64,11 @@ void MainMenu::on_nextQuestionButton_clicked(){
     else{
         std::cout << "wrong" << std::endl;
     }
+
+//    morseModel.getNextQuestion();
+//    StudyQuestion question = morseModel.getCurrentQuestion();
+//    ui->studyMorseLabel->setText(question.getQuestion());
+//    ui->userInput->clear();
 }
 
 void MainMenu::level1(){
