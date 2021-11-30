@@ -44,9 +44,9 @@ void model::generateBasics(QVector<QString> wordList){
 
     // Teach the new letters
     for(QString& letter : wordList){
-        QString question = "The letter ";
+        QString question = "The letter '";
         question.append(letter);
-        question.append(" is represented by ");
+        question.append("' is represented by ");
 
         QString answer = translator.englishToMorse(letter);
 
@@ -77,7 +77,7 @@ void model::generateRandomQuestions(int numberOfQuestions, QVector<QString> word
             level.append(newQuestion);
         }
         else {
-            QString question = "What does '";
+            QString question = "What sequence of letters does '";
             question.append(currCode);
             question.append("' represent?");
             StudyQuestion newQuestion(question, currWord);
