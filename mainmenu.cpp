@@ -55,20 +55,20 @@ void MainMenu::on_menuButton_clicked()
 }
 
 void MainMenu::on_nextQuestionButton_clicked(){
-    if(morseModel.isCorrectAnswer(ui->userInput->toPlainText())){
-        morseModel.getNextQuestion();
-        StudyQuestion question = morseModel.getCurrentQuestion();
-        ui->studyMorseLabel->setText(question.getQuestion());
-        ui->userInput->clear();
-    }
-    else{
-        std::cout << "wrong" << std::endl;
-    }
+//    if(morseModel.isCorrectAnswer(ui->userInput->toPlainText())){
+//        morseModel.getNextQuestion();
+//        StudyQuestion question = morseModel.getCurrentQuestion();
+//        ui->studyMorseLabel->setText(question.getQuestion());
+//        ui->userInput->clear();
+//    }
+//    else{
+//        std::cout << "wrong" << std::endl;
+//    }
 
-//    morseModel.getNextQuestion();
-//    StudyQuestion question = morseModel.getCurrentQuestion();
-//    ui->studyMorseLabel->setText(question.getQuestion());
-//    ui->userInput->clear();
+    morseModel.getNextQuestion();
+    StudyQuestion question = morseModel.getCurrentQuestion();
+    ui->studyMorseLabel->setText(question.getQuestion());
+    ui->userInput->clear();
 }
 
 void MainMenu::level1(){
