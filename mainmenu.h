@@ -2,6 +2,7 @@
 #define MAINMENU_H
 
 #include <QMainWindow>
+#include <box2d/box2d.h>
 #include "model.h"
 
 QT_BEGIN_NAMESPACE
