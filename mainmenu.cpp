@@ -41,6 +41,8 @@ MainMenu::MainMenu(QWidget *parent)
     ui->studyLevelLabel->setFont(armyStyle22);
     ui->questionNumber->setFont(armyStyle22);
     ui->translateLabel->setFont(armyStyle22);
+    ui->toTranslateLanguageLabel->setFont(armyStyle14);
+    ui->resultLanguageLabel->setFont(armyStyle14);
     // When translating, default to English -> Morse
     encode = true;
 
@@ -214,10 +216,16 @@ void MainMenu::level6(){
 
 void MainMenu::on_switchEncodeDecode_clicked()
 {
-    if (encode)
+    if (encode){
         encode = false;
-    else
+        ui->toTranslateLanguageLabel->setText("Morse code");
+        ui->resultLanguageLabel->setText("Text");
+    }
+    else {
         encode = true;
+        ui->toTranslateLanguageLabel->setText("Text");
+        ui->resultLanguageLabel->setText("Morse code");
+    }
 
     QString untranslated = ui->inputToTranslate->toPlainText();
     QString translated = ui->translateResult->toPlainText();
