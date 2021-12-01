@@ -33,6 +33,8 @@ private slots:
     void updateTranslation();
 
 
+    void on_fieldPracticeButton_clicked();
+
 private:
     Ui::MainMenu *ui;
     model morseModel;

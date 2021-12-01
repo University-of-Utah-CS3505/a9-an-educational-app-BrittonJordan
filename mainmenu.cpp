@@ -22,7 +22,8 @@ MainMenu::MainMenu(QWidget *parent)
     armyStyle22.setPointSize(22);
     QFont armyStyle14(family);
     armyStyle14.setPointSize(14);
-    //Font change on buttons
+
+    //Set font for buttons
     ui->level1Button->setFont(armyStyle);
     ui->level2Button->setFont(armyStyle);
     ui->level3Button->setFont(armyStyle);
@@ -32,10 +33,12 @@ MainMenu::MainMenu(QWidget *parent)
     ui->menuButton->setFont(armyStyle14);
     ui->studyButton->setFont(armyStyle14);
     ui->translateButton->setFont(armyStyle14);
+    ui->fieldPracticeButton->setFont(armyStyle14);
     ui->helpButton->setFont(armyStyle);
     ui->nextQuestionButton->setFont(armyStyle);
     ui->previousQuestionButton->setFont(armyStyle);
-    //font change for labels
+
+    // Set font for labels
     ui->gameTitleLabel->setFont(armyStyle28);
     ui->studyLabel->setFont(armyStyle22);
     ui->studyLevelLabel->setFont(armyStyle22);
@@ -43,6 +46,7 @@ MainMenu::MainMenu(QWidget *parent)
     ui->translateLabel->setFont(armyStyle22);
     ui->toTranslateLanguageLabel->setFont(armyStyle14);
     ui->resultLanguageLabel->setFont(armyStyle14);
+
     // When translating, default to English -> Morse
     encode = true;
 
@@ -98,10 +102,16 @@ void MainMenu::on_menuButton_clicked()
 }
 
 void MainMenu::on_translateButton_clicked(){
-    ui->menuStack->setCurrentIndex(3);
+    ui->menuStack->setCurrentIndex(3); // Switch to Translate menu
     ui->studyMorseLabel->clear();
 
     questionCounter = 1;
+}
+
+void MainMenu::on_fieldPracticeButton_clicked()
+{
+    ui->menuStack->setCurrentIndex(4); // Switch to Field Practice menu
+    ui->studyMorseLabel->clear();
 }
 
 void MainMenu::on_nextQuestionButton_clicked(){
@@ -239,4 +249,3 @@ void MainMenu::updateTranslation(){
     else
         ui->translateResult->setText(translate.morseToEnglish(toTranslate));
 }
-
