@@ -10,4 +10,12 @@
     <qresource prefix="/Fonts">
         <file>armalite.ttf</file>
     </qresource>
+    <qresource prefix="/Images">
+        <file>A-EMorse.png</file>
+        <file>F-JMorse.png</file>
+        <file>K-PMorse.png</file>
+        <file>Q-UMorse.png</file>
+        <file>V-ZMorse.png</file>
+        <file>A-ZMorse.png</file>
+    </qresource>
 </RCC>
