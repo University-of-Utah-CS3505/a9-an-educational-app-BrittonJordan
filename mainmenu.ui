@@ -30,7 +30,7 @@
      <string notr="true">background-color: rgb(204, 193, 177);</string>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="topMenu">
      <widget class="QLabel" name="gameTitleLabel">
@@ -282,6 +282,17 @@
        <string>help for specific level letters</string>
       </property>
      </widget>
+     <widget class="SceneWidget" name="animationWidget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>651</width>
+        <height>591</height>
+       </rect>
+      </property>
+     </widget>
+     <zorder>animationWidget</zorder>
      <zorder>studyLevelLabel</zorder>
      <zorder>userInput</zorder>
      <zorder>studyMorseLabel</zorder>
@@ -1359,6 +1370,14 @@
    </widget>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SceneWidget</class>
+   <extends>QWidget</extends>
+   <header>SceneWidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

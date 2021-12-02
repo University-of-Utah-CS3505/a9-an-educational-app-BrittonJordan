@@ -10,6 +10,7 @@ MainMenu::MainMenu(QWidget *parent)
     ui->setupUi(this);
     ui->menuStack->setCurrentIndex(0); // Start on the Main Menu
     ui->helpPicture->setVisible(false);
+    ui->animationWidget->show();
 
     //Font stuff
     int id = QFontDatabase::addApplicationFont(":/Fonts/armalite.ttf");

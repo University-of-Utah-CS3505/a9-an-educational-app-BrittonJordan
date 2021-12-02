@@ -14,6 +14,7 @@ SOURCES += \
     model.cpp \
     morsetranslator.cpp \
     morsetranslatortests.cpp \
+    scenewidget.cpp \
     studyquestion.cpp
 
 HEADERS += \
@@ -21,6 +22,7 @@ HEADERS += \
     model.h \
     morsetranslator.h \
     morsetranslatortests.h \
+    scenewidget.h \
     studyquestion.h
 
 FORMS += \
@@ -32,7 +34,7 @@ INCLUDEPATH += $$PWD/box2d/include
 DEPENDPATH += $$PWD/box2d/include
 
 macx: PRE_TARGETDEPS += $$PWD/box2d/build/bin/libbox2d.a
-PRE_TARGETDEPS += $$PWD/box2d/build/bin/box2d.lib
+#PRE_TARGETDEPS += $$PWD/box2d/build/bin/box2d.lib
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
