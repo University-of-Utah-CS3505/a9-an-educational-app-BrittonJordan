@@ -165,6 +165,11 @@ void MainMenu::level1(){
 
     ui->studyLevelLabel->setText("Study Level: 1");
 
+    QPixmap pixmap(":/Images/A-EMorse.png");
+        ui->helpPicture->setPixmap(pixmap);
+        ui->helpPicture->setScaledContents(true);
+        ui->helpPicture->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+
     StudyQuestion question = morseModel.getCurrentQuestion();
     ui->studyMorseLabel->setText(question.getQuestion());
 }
@@ -175,6 +180,11 @@ void MainMenu::level2(){
     morseModel.generateLevel(2);
 
     ui->studyLevelLabel->setText("Study Level: 2");
+
+    QPixmap pixmap(":/Images/F-JMorse.png");
+        ui->helpPicture->setPixmap(pixmap);
+        ui->helpPicture->setScaledContents(true);
+        ui->helpPicture->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
 
     StudyQuestion question = morseModel.getCurrentQuestion();
     ui->studyMorseLabel->setText(question.getQuestion());
@@ -187,6 +197,11 @@ void MainMenu::level3(){
 
     ui->studyLevelLabel->setText("Study Level: 3");
 
+    QPixmap pixmap(":/Images/K-PMorse.png");
+        ui->helpPicture->setPixmap(pixmap);
+        ui->helpPicture->setScaledContents(true);
+        ui->helpPicture->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+
     StudyQuestion question = morseModel.getCurrentQuestion();
     ui->studyMorseLabel->setText(question.getQuestion());
 }
@@ -197,6 +212,11 @@ void MainMenu::level4(){
     morseModel.generateLevel(4);
 
     ui->studyLevelLabel->setText("Study Level: 4");
+
+    QPixmap pixmap(":/Images/Q-UMorse.png");
+        ui->helpPicture->setPixmap(pixmap);
+        ui->helpPicture->setScaledContents(true);
+        ui->helpPicture->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
 
     StudyQuestion question = morseModel.getCurrentQuestion();
     ui->studyMorseLabel->setText(question.getQuestion());
@@ -209,6 +229,11 @@ void MainMenu::level5(){
 
     ui->studyLevelLabel->setText("Study Level: 5");
 
+    QPixmap pixmap(":/Images/V-ZMorse.png");
+        ui->helpPicture->setPixmap(pixmap);
+        ui->helpPicture->setScaledContents(true);
+        ui->helpPicture->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+
     StudyQuestion question = morseModel.getCurrentQuestion();
     ui->studyMorseLabel->setText(question.getQuestion());
 }
@@ -219,6 +244,11 @@ void MainMenu::level6(){
     morseModel.generateLevel(6);
 
     ui->studyLevelLabel->setText("Study Level: 6");
+
+    QPixmap pixmap(":/Images/A-ZMorse.png");
+        ui->helpPicture->setPixmap(pixmap);
+        ui->helpPicture->setScaledContents(true);
+        ui->helpPicture->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
 
     StudyQuestion question = morseModel.getCurrentQuestion();
     ui->studyMorseLabel->setText(question.getQuestion());
