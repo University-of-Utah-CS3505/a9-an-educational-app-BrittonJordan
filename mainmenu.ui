@@ -30,7 +30,7 @@
      <string notr="true">background-color: rgb(204, 193, 177);</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="topMenu">
      <widget class="QLabel" name="gameTitleLabel">
@@ -73,7 +73,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Study</string>
+       <string>Boot Camp</string>
       </property>
      </widget>
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -1342,7 +1342,7 @@
         <string notr="true">background-color: rgb(204, 193, 177);</string>
        </property>
        <property name="text">
-        <string>Study</string>
+        <string>Boot Camp</string>
        </property>
       </widget>
      </item>

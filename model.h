@@ -12,11 +12,14 @@ class model : public QObject
     QVector<StudyQuestion> level;
     int currentQuestion;
     MorseTranslator translator;
+    bool continueFlashing;
 
     void generateBasics(QVector<QString> wordList);
     void generateStudyQuestion(QVector<QString> wordList);
     void generateRandomQuestions(int numberOfQuestions, QVector<QString> wordList);
     static QVector<QString> readWordList(int levelNumber);
+
+//    void flashMorsePhrase(QString phrase);
 
 public:
     explicit model(QObject *parent = nullptr);
@@ -26,9 +29,15 @@ public:
     StudyQuestion getPreviousQuestion();
     StudyQuestion getCurrentQuestion();
     bool isCorrectAnswer(QString answer);
+    void flashTextPhrase(QString phrase);
 
 signals:
     void goToStudyMenu();
+    void flashOn();
+    void flashOff();
+
+private slots:
+    void flashCharacter(QString phrase);
 
 };
 
