@@ -23,6 +23,7 @@ private slots:
     void on_translateButton_clicked();
     void on_nextQuestionButton_clicked();
     void on_previousQuestionButton_clicked();
+    void on_fieldPracticeButton_clicked();
     void on_helpButton_clicked();
     void level1();
     void level2();
@@ -33,8 +34,9 @@ private slots:
     void on_switchEncodeDecode_clicked();
     void updateTranslation();
 
+    void flashOnLabel();
+    void flashOffLabel();
 
-    void on_fieldPracticeButton_clicked();
 
 private:
     Ui::MainMenu *ui;

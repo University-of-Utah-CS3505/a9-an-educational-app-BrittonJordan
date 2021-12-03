@@ -13,12 +13,14 @@ class model : public QObject
     int currentQuestion;
     MorseTranslator translator;
     bool continueFlashing;
+    QString flashingPhrase;
+    const int ditTime = 200;
 
     void generateBasics(QVector<QString> wordList);
     void generateStudyQuestion(QVector<QString> wordList);
     void generateRandomQuestions(int numberOfQuestions, QVector<QString> wordList);
     static QVector<QString> readWordList(int levelNumber);
-
+//    void flashCharacter();
 //    void flashMorsePhrase(QString phrase);
 
 public:
@@ -37,7 +39,8 @@ signals:
     void flashOff();
 
 private slots:
-    void flashCharacter(QString phrase);
+    void flashCharacter();
+    void flashOffCharacter();
 
 };
 

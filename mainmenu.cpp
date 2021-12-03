@@ -79,6 +79,9 @@ MainMenu::MainMenu(QWidget *parent)
     connect(&morseModel, &model::goToStudyMenu, this, &MainMenu::on_studyButton_clicked);
 
     connect(ui->inputToTranslate, &QTextEdit::textChanged, this, &MainMenu::updateTranslation);
+
+    connect(&morseModel, &model::flashOn, this, &MainMenu::flashOnLabel);
+    connect(&morseModel, &model::flashOff, this, &MainMenu::flashOffLabel);
 }
 
 MainMenu::~MainMenu()
@@ -113,6 +116,8 @@ void MainMenu::on_fieldPracticeButton_clicked()
 {
     ui->menuStack->setCurrentIndex(4); // Switch to Field Practice menu
     ui->studyMorseLabel->clear();
+
+    morseModel.flashTextPhrase(QString("sos sos sos sos"));
 }
 
 void MainMenu::on_nextQuestionButton_clicked(){
@@ -279,4 +284,12 @@ void MainMenu::updateTranslation(){
         ui->translateResult->setText(translate.englishToMorse(toTranslate));
     else
         ui->translateResult->setText(translate.morseToEnglish(toTranslate));
+}
+
+void MainMenu::flashOnLabel(){
+    ui->flashLabel->setStyleSheet(QString("background-color: rgb(255, 255, 255);"));
+}
+
+void MainMenu::flashOffLabel(){
+    ui->flashLabel->setStyleSheet(QString("background-color: rgb(180, 170, 156);"));
 }

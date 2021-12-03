@@ -30,7 +30,7 @@
      <string notr="true">background-color: rgb(204, 193, 177);</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="topMenu">
      <widget class="QLabel" name="gameTitleLabel">
@@ -1278,18 +1278,39 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page">
-     <widget class="QLabel" name="label">
+    <widget class="QWidget" name="fieldPracticePage">
+     <widget class="QLabel" name="fieldPracticeLabel">
       <property name="geometry">
        <rect>
-        <x>250</x>
-        <y>150</y>
+        <x>20</x>
+        <y>20</y>
         <width>291</width>
         <height>16</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Bahnschrift</family>
+       </font>
+      </property>
       <property name="text">
-       <string>new ui page who this</string>
+       <string>Field Practice</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="flashLabel">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>70</y>
+        <width>181</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(180, 170, 156);</string>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
