@@ -15,7 +15,7 @@ class model : public QObject
     bool continueFlashing;
     QString flashingPhrase;
     QString currentPhrase;
-    const int ditTime = 200;
+    const int ditTime = 400;
     QList<QString> fieldPhrases;
 
 
@@ -25,8 +25,6 @@ class model : public QObject
     void generateFieldPhrases();
 
     static QVector<QString> readWordList(int levelNumber);
-//    void flashCharacter();
-//    void flashMorsePhrase(QString phrase);
 
 public:
     explicit model(QObject *parent = nullptr);

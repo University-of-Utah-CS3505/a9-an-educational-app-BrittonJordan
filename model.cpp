@@ -159,8 +159,9 @@ void model::generateFieldPhrases(){
 }
 
 QString model::generateFieldPracticeQuestion(){
-    int questionIndex = arc4random() % fieldPhrases.length();
-    return fieldPhrases[questionIndex];
+//    int questionIndex = rand() % fieldPhrases.length();
+//    return fieldPhrases[questionIndex];
+    return QString("sos sos sos");
 }
 
 bool model::correctFieldAnswer(QString answer){
@@ -184,7 +185,7 @@ void model::flashCharacter(){
         return;
 
     const int dahTime = 3*ditTime;
-    const int wordSpaceTime = ditTime * 7;
+    const int wordSpaceTime = ditTime;
 
     QChar currChar = flashingPhrase[0];
 
