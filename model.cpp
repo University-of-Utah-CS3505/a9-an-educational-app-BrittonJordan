@@ -3,14 +3,16 @@
 #include <QTextStream>
 #include <QDebug>
 #include "morsetranslator.h"
+#include <QTimer>
 
-model::model(QObject *parent) : QObject(parent), currentQuestion(0)
+model::model(QObject *parent) : QObject(parent), currentQuestion(0), continueFlashing(true)
 {
 }
 
 /**
- * @brief model::generateLevel Generates a level of StudyQuestions, modifying the level instance
- * @param levelNumber
+ * @brief model::generateLevel Generates a level of StudyQuestions.
+ *                             Modifies the level instance
+ * @param levelNumber Determines which word list the level is generated from
  */
 void model::generateLevel(int levelNumber){
     currentQuestion = 0;
@@ -25,7 +27,7 @@ void model::generateStudyQuestion(QVector<QString> wordList){
     int numberOfQuestions = 10;
     QVector<QString> words;
 
-    // Remove basic strings from word list
+    // Find all non-basic strings
     for(QString& word : wordList){
         if(word.length() != 1){
             words.push_back(word);
@@ -38,7 +40,7 @@ void model::generateBasics(QVector<QString> wordList){
     int numberOfQuestions = 10;
     QVector<QString> allLetters;
 
-    // Remove non-basic strings from the word list
+    // Find all basic strings
     for(QString& word : wordList){
         if(word.length() == 1){
             allLetters.push_back(word);
@@ -144,3 +146,43 @@ QVector<QString> model::readWordList(int levelNumber){
 
     return wordList;
 }
+
+
+void model::flashTextPhrase(QString textPhrase){
+    QString encodedPhrase = translator.englishToMorse(textPhrase);
+    flashCharacter(encodedPhrase);
+}
+
+void model::flashCharacter(QString morsePhrase){
+    emit flashOff();
+    int phraseLength = morsePhrase.length();
+    if(phraseLength == 0 || !continueFlashing)
+        return;
+
+    const int ditTime = 10;
+    const int dahTime = 3*ditTime;
+    const int wordSpaceTime = ditTime * 7;
+
+    QChar currChar = morsePhrase[0];
+
+    int waitTime;
+    if(currChar == '.'){
+        emit flashOn();
+        waitTime = ditTime;
+    }
+    else if(currChar == '-'){
+        emit flashOn();
+        waitTime = dahTime;
+    }
+    else if(currChar == ' '){
+        waitTime = ditTime;
+    }
+    else{
+        waitTime = wordSpaceTime;
+    }
+    QTimer::singleShot(waitTime, this, SLOT(flashCharacter(morsePhrase.right(phraseLength - 1))));
+}
+
+//void model::flashOffCharacter(QString phrase){
+//    flashCharacter(phrase);
+//}
