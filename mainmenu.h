@@ -38,6 +38,14 @@ private slots:
     void flashOffLabel();
 
 
+    void on_goButton_clicked();
+
+    void on_checkAnswerButton_clicked();
+
+    void nextFieldQuestion();
+
+    void retryFieldQuestion();
+
 private:
     Ui::MainMenu *ui;
     model morseModel;
@@ -45,5 +53,7 @@ private:
 
     MorseTranslator translate;
     bool encode;
+
+    void displayFieldPracticeInstructions();
 };
 #endif // MAINMENU_H

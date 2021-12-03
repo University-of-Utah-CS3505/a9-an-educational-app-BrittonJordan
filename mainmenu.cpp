@@ -117,7 +117,7 @@ void MainMenu::on_fieldPracticeButton_clicked()
     ui->menuStack->setCurrentIndex(4); // Switch to Field Practice menu
     ui->studyMorseLabel->clear();
 
-    morseModel.flashTextPhrase(QString("sos sos sos sos"));
+    displayFieldPracticeInstructions();
 }
 
 void MainMenu::on_nextQuestionButton_clicked(){
@@ -263,3 +263,66 @@ void MainMenu::flashOnLabel(){
 void MainMenu::flashOffLabel(){
     ui->flashLabel->setStyleSheet(QString("background-color: rgb(180, 170, 156);"));
 }
+
+
+void MainMenu::displayFieldPracticeInstructions(){
+    ui->goButton->setEnabled(true);
+    ui->goButton->setVisible(true);
+
+    ui->instructionLabel->setEnabled(true);
+    ui->instructionLabel->setVisible(true);
+
+    ui->checkAnswerButton->setEnabled(false);
+    ui->checkAnswerButton->setVisible(false);
+
+    ui->userAnswerLabel->setEnabled(false);
+    ui->userAnswerLabel->setVisible(false);
+
+    ui->userAnswerBox->setEnabled(false);
+    ui->userAnswerBox->setVisible(false);
+}
+void MainMenu::on_goButton_clicked()
+{
+    ui->goButton->setEnabled(false);
+    ui->goButton->setVisible(false);
+
+    ui->instructionLabel->setEnabled(false);
+    ui->instructionLabel->setVisible(false);
+
+    ui->checkAnswerButton->setEnabled(true);
+    ui->checkAnswerButton->setVisible(true);
+
+    ui->userAnswerLabel->setEnabled(true);
+    ui->userAnswerLabel->setVisible(true);
+
+    ui->userAnswerBox->setEnabled(true);
+    ui->userAnswerBox->setVisible(true);
+
+   nextFieldQuestion();
+
+}
+
+void MainMenu::on_checkAnswerButton_clicked()
+{
+    if (morseModel.correctFieldAnswer(ui->userAnswerBox->toPlainText())){
+        ui->reportCorrectLabel->setText("Correct!");
+        QTimer::singleShot(2000, this, &MainMenu::nextFieldQuestion);
+
+    } else {
+        ui->reportCorrectLabel->setText("Try again!");
+        QTimer::singleShot(2000, this, &MainMenu::retryFieldQuestion);
+    }
+}
+
+void MainMenu::nextFieldQuestion(){
+    ui->reportCorrectLabel->setText("");
+    ui->userAnswerBox->setText("");
+    morseModel.flashTextPhrase(morseModel.generateFieldPracticeQuestion());
+}
+
+void MainMenu::retryFieldQuestion(){
+    ui->reportCorrectLabel->setText("");
+    ui->userAnswerBox->setText("");
+    morseModel.retryFieldQuestion();
+}
+
