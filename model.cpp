@@ -149,21 +149,20 @@ QVector<QString> model::readWordList(int levelNumber){
 
 
 void model::flashTextPhrase(QString textPhrase){
-    QString encodedPhrase = translator.englishToMorse(textPhrase);
-    flashCharacter(encodedPhrase);
+    flashingPhrase = translator.englishToMorse(textPhrase);
+    std::cout<<flashingPhrase.toStdString()<<std::endl;
+    flashCharacter();
 }
 
-void model::flashCharacter(QString morsePhrase){
-    emit flashOff();
-    int phraseLength = morsePhrase.length();
+void model::flashCharacter(){
+    int phraseLength = flashingPhrase.length();
     if(phraseLength == 0 || !continueFlashing)
         return;
 
-    const int ditTime = 10;
     const int dahTime = 3*ditTime;
     const int wordSpaceTime = ditTime * 7;
 
-    QChar currChar = morsePhrase[0];
+    QChar currChar = flashingPhrase[0];
 
     int waitTime;
     if(currChar == '.'){
@@ -180,9 +179,11 @@ void model::flashCharacter(QString morsePhrase){
     else{
         waitTime = wordSpaceTime;
     }
-    QTimer::singleShot(waitTime, this, SLOT(flashCharacter(morsePhrase.right(phraseLength - 1))));
+    flashingPhrase = flashingPhrase.right(phraseLength - 1);
+    QTimer::singleShot(waitTime, this, SLOT(flashOffCharacter()));
 }
 
-//void model::flashOffCharacter(QString phrase){
-//    flashCharacter(phrase);
-//}
+void model::flashOffCharacter(){
+    emit flashOff();
+    QTimer::singleShot(ditTime, this, SLOT(flashCharacter()));
+}
