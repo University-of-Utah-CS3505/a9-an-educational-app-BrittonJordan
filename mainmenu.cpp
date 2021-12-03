@@ -298,7 +298,7 @@ void MainMenu::on_goButton_clicked()
     ui->userAnswerBox->setEnabled(true);
     ui->userAnswerBox->setVisible(true);
 
-   nextFieldQuestion();
+   QTimer::singleShot(1250, this, &MainMenu::nextFieldQuestion);
 
 }
 
