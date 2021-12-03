@@ -7,6 +7,7 @@
 
 model::model(QObject *parent) : QObject(parent), currentQuestion(0), continueFlashing(true)
 {
+    generateFieldPhrases();
 }
 
 /**
@@ -147,8 +148,31 @@ QVector<QString> model::readWordList(int levelNumber){
     return wordList;
 }
 
+void model::generateFieldPhrases(){
+    fieldPhrases.append("sos"); // Distress signal
+    fieldPhrases.append("c"); // Correct/Yes
+    fieldPhrases.append("n"); // Incorrect/No
+    fieldPhrases.append("hh"); // Error in sending
+    fieldPhrases.append("nm"); // No more
+    fieldPhrases.append("hi"); // Laugh (think lol)
+    // Etc
+}
+
+QString model::generateFieldPracticeQuestion(){
+    int questionIndex = arc4random() % fieldPhrases.length();
+    return fieldPhrases[questionIndex];
+}
+
+bool model::correctFieldAnswer(QString answer){
+    return translator.englishToMorse(answer.trimmed()) == currentPhrase;
+}
+
+void model::retryFieldQuestion(){
+    flashTextPhrase(currentPhrase);
+}
 
 void model::flashTextPhrase(QString textPhrase){
+    currentPhrase = translator.englishToMorse(textPhrase);
     flashingPhrase = translator.englishToMorse(textPhrase);
     std::cout<<flashingPhrase.toStdString()<<std::endl;
     flashCharacter();

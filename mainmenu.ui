@@ -1280,6 +1280,9 @@
     </widget>
     <widget class="QWidget" name="fieldPracticePage">
      <widget class="QLabel" name="fieldPracticeLabel">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -1298,11 +1301,14 @@
       </property>
      </widget>
      <widget class="QLabel" name="flashLabel">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>70</y>
-        <width>181</width>
+        <x>100</x>
+        <y>100</y>
+        <width>431</width>
         <height>191</height>
        </rect>
       </property>
@@ -1313,6 +1319,93 @@
        <string/>
       </property>
      </widget>
+     <widget class="QLabel" name="instructionLabel">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>50</y>
+        <width>631</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Instructions:
+
+	After hitting “Go” you will see a flashing light which displays common Morse phrases.
+
+	Do your best to interpret the phrase, then type it into the answer box to check if you’re correct!</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="goButton">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>260</y>
+        <width>81</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Go!</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="userAnswerBox">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>363</y>
+        <width>321</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="userAnswerLabel">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>340</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>your answer:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="checkAnswerButton">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>360</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Check</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="reportCorrectLabel">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>410</y>
+        <width>241</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <zorder>fieldPracticeLabel</zorder>
+     <zorder>flashLabel</zorder>
+     <zorder>userAnswerBox</zorder>
+     <zorder>userAnswerLabel</zorder>
+     <zorder>checkAnswerButton</zorder>
+     <zorder>reportCorrectLabel</zorder>
+     <zorder>instructionLabel</zorder>
+     <zorder>goButton</zorder>
     </widget>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget">
