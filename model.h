@@ -42,6 +42,7 @@ public:
 
 signals:
     void goToStudyMenu();
+    void rainConfetti();
     void flashOn();
     void flashOff();
 

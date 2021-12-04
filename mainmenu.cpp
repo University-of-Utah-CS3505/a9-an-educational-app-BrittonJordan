@@ -10,7 +10,9 @@ MainMenu::MainMenu(QWidget *parent)
     ui->setupUi(this);
     ui->menuStack->setCurrentIndex(0); // Start on the Main Menu
     ui->helpPicture->setVisible(false);
-    ui->animationWidget->show();
+
+    ui->animationWidget->hide();
+    ui->animationWidget->setDisabled(true);
 
     //Font stuff
     int id = QFontDatabase::addApplicationFont(":/Fonts/armalite.ttf");
@@ -78,10 +80,17 @@ MainMenu::MainMenu(QWidget *parent)
     //isNextQuestion
     connect(&morseModel, &model::goToStudyMenu, this, &MainMenu::on_studyButton_clicked);
 
+    //Translate text
     connect(ui->inputToTranslate, &QTextEdit::textChanged, this, &MainMenu::updateTranslation);
 
     connect(&morseModel, &model::flashOn, this, &MainMenu::flashOnLabel);
     connect(&morseModel, &model::flashOff, this, &MainMenu::flashOffLabel);
+
+    //Rain conffeti
+    connect(&morseModel, &model::rainConfetti, this, &MainMenu::handleConfettiFalling);
+
+    //Handle SceneWidget Confetti Timer
+    connect(&ui->animationWidget->confettiTimer, &QTimer::timeout, ui->animationWidget, &SceneWidget::updateWorld);
 }
 
 MainMenu::~MainMenu()
@@ -118,29 +127,32 @@ void MainMenu::on_fieldPracticeButton_clicked()
     ui->studyMorseLabel->clear();
 
     displayFieldPracticeInstructions();
+    morseModel.flashTextPhrase(QString("sos sos sos sos"));
+
+    questionCounter = 1;
 }
 
 void MainMenu::on_nextQuestionButton_clicked(){
-    if(morseModel.isCorrectAnswer(ui->userInput->toPlainText())){
-        std::cout << "correct" << std::endl;
+//    if(morseModel.isCorrectAnswer(ui->userInput->toPlainText())){
+//        std::cout << "correct" << std::endl;
 
-        questionCounter++;
-        ui->questionNumber->setText("Question Number: " +QString::number(questionCounter));
+//        questionCounter++;
+//        ui->questionNumber->setText("Question Number: " +QString::number(questionCounter));
 
-        ui->userInput->clear();
+//        ui->userInput->clear();
 
-        morseModel.getNextQuestion();
-        StudyQuestion question = morseModel.getCurrentQuestion();
-        ui->studyMorseLabel->setText(question.getQuestion());
-    }
-    else{
-        std::cout << "wrong" << std::endl;
-    }
+//        morseModel.getNextQuestion();
+//        StudyQuestion question = morseModel.getCurrentQuestion();
+//        ui->studyMorseLabel->setText(question.getQuestion());
+//    }
+//    else{
+//        std::cout << "wrong" << std::endl;
+//    }
 
-//    morseModel.getNextQuestion();
-//    StudyQuestion question = morseModel.getCurrentQuestion();
-//    ui->studyMorseLabel->setText(question.getQuestion());
-//    ui->userInput->clear();
+    morseModel.getNextQuestion();
+    StudyQuestion question = morseModel.getCurrentQuestion();
+    ui->studyMorseLabel->setText(question.getQuestion());
+    ui->userInput->clear();
 }
 
 void MainMenu::on_previousQuestionButton_clicked(){
@@ -161,6 +173,14 @@ void MainMenu::on_helpButton_clicked(){
         ui->helpPicture->setVisible(false);
     else
         ui->helpPicture->setVisible(true);
+}
+
+void MainMenu::handleConfettiFalling(){
+    ui->animationWidget->setDisabled(false);
+    ui->animationWidget->show();
+
+    ui->animationWidget->resetConfetti();
+    ui->animationWidget->startConfetti();
 }
 
 void MainMenu::level1(){

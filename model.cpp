@@ -103,10 +103,12 @@ void model::generateRandomQuestions(int numberOfQuestions, QVector<QString> word
 StudyQuestion model::getNextQuestion(){
     if(currentQuestion == level.length() - 1){
         emit goToStudyMenu();
+        emit rainConfetti();
         StudyQuestion blank("blank", "blank");
         return blank;
     }
     else{
+        emit rainConfetti();
         currentQuestion++;
         return level[currentQuestion];
     }

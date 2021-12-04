@@ -12,6 +12,9 @@ class SceneWidget : public QWidget
 public:
     explicit SceneWidget(QWidget *parent = nullptr);
     void paintEvent(QPaintEvent *);
+    void startConfetti();
+    void resetConfetti();
+    QTimer confettiTimer;
 
 signals:
 
@@ -21,8 +24,6 @@ public slots:
 private:
     b2World world;
     b2Body* body;
-    QTimer timer;
-    //QImage image;
     QVector<QImage> confetti;
     QImage projectile;
 };
