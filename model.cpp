@@ -7,7 +7,7 @@
 
 model::model(QObject *parent) : QObject(parent), currentQuestion(0), continueFlashing(true)
 {
-    generateFieldPhrases();
+   readFieldPhrasesFile();
 }
 
 /**
@@ -150,20 +150,56 @@ QVector<QString> model::readWordList(int levelNumber){
     return wordList;
 }
 
-void model::generateFieldPhrases(){
-    fieldPhrases.append("sos"); // Distress signal
-    fieldPhrases.append("c"); // Correct/Yes
-    fieldPhrases.append("n"); // Incorrect/No
-    fieldPhrases.append("hh"); // Error in sending
-    fieldPhrases.append("nm"); // No more
-    fieldPhrases.append("hi"); // Laugh (think lol)
-    // Etc
+void model::readFieldPhrasesFile(){
+
+    QFile phraseFile(":/levelLists/FieldPhrases.txt");
+    if (!phraseFile.open(QIODevice::ReadOnly)){
+        qWarning("Field Practice phrase file not found.");
+        return;
+    }
+
+
+    QTextStream phrases(&phraseFile);
+    while (!phrases.atEnd()){
+        QString phraseAndDescription = phrases.readLine();
+        int i = 0;
+
+        // Read line until end of phrase found
+        QString phrase = "";
+        while (i < phraseAndDescription.length()){
+            QChar currentChar = phraseAndDescription.at(i);
+            if (currentChar == ':'){
+                i++;
+                break;
+            }
+            else
+                phrase.append(currentChar);
+            i++;
+        }
+
+        // Read the rest of the line to retrieve description.
+        QString description = "";
+        while (i < phraseAndDescription.length()){
+            description.append(phraseAndDescription.at(i));
+            i++;
+        }
+
+        fieldPhrases.push_back(phrase);
+        fieldPhraseDescriptions[phrase] = description;
+    }
 }
 
-QString model::generateFieldPracticeQuestion(){
-//    int questionIndex = rand() % fieldPhrases.length();
-//    return fieldPhrases[questionIndex];
-    return QString("sos sos sos");
+QString model::getFieldPracticePhrase(int index){
+    return fieldPhrases[index];
+}
+
+QString model::getCurrentPhraseDescription(){
+    QString phrase = translator.morseToEnglish(currentPhrase);
+    return fieldPhraseDescriptions[phrase];
+}
+
+int model::getFieldPhrasesCount(){
+    return fieldPhrases.length();
 }
 
 bool model::correctFieldAnswer(QString answer){
