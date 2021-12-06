@@ -17,12 +17,13 @@ class model : public QObject
     QString currentPhrase;
     const int ditTime = 400;
     QList<QString> fieldPhrases;
+    QMap<QString, QString> fieldPhraseDescriptions;
 
 
     void generateBasics(QVector<QString> wordList);
     void generateStudyQuestion(QVector<QString> wordList);
     void generateRandomQuestions(int numberOfQuestions, QVector<QString> wordList);
-    void generateFieldPhrases();
+    void readFieldPhrasesFile();
 
     static QVector<QString> readWordList(int levelNumber);
 
@@ -34,7 +35,9 @@ public:
     StudyQuestion getCurrentQuestion();
     bool isCorrectAnswer(QString answer);
     void flashTextPhrase(QString phrase);
-    QString generateFieldPracticeQuestion();
+    QString getFieldPracticePhrase();
+    QString getCurrentPhraseDescription();
+    int getFieldPhrasesCount();
     bool correctFieldAnswer(QString answer);
     void retryFieldQuestion();
 

@@ -6,6 +6,7 @@
         <file>Level4.txt</file>
         <file>Level5.txt</file>
         <file>Level6.txt</file>
+        <file>FieldPhrases.txt</file>
     </qresource>
     <qresource prefix="/Fonts">
         <file>armalite.ttf</file>

@@ -127,8 +127,6 @@ void MainMenu::on_fieldPracticeButton_clicked()
     ui->studyMorseLabel->clear();
 
     displayFieldPracticeInstructions();
-    morseModel.flashTextPhrase(QString("sos sos sos sos"));
-
     questionCounter = 1;
 }
 
@@ -330,6 +328,9 @@ void MainMenu::displayFieldPracticeInstructions(){
 
     ui->userAnswerBox->setEnabled(false);
     ui->userAnswerBox->setVisible(false);
+
+    ui->nextPhraseButton->setEnabled(false);
+    ui->nextPhraseButton->setVisible(false);
 }
 void MainMenu::on_goButton_clicked()
 {
@@ -355,8 +356,11 @@ void MainMenu::on_goButton_clicked()
 void MainMenu::on_checkAnswerButton_clicked()
 {
     if (morseModel.correctFieldAnswer(ui->userAnswerBox->toPlainText())){
-        ui->reportCorrectLabel->setText("Correct!");
-        QTimer::singleShot(2000, this, &MainMenu::nextFieldQuestion);
+        QString reportCorrect = "Correct!\n";
+        reportCorrect.append(morseModel.getCurrentPhraseDescription());
+        ui->reportCorrectLabel->setText(reportCorrect);
+        ui->nextPhraseButton->setEnabled(true);
+        ui->nextPhraseButton->setVisible(true);
 
     } else {
         ui->reportCorrectLabel->setText("Try again!");
@@ -367,12 +371,20 @@ void MainMenu::on_checkAnswerButton_clicked()
 void MainMenu::nextFieldQuestion(){
     ui->reportCorrectLabel->setText("");
     ui->userAnswerBox->setText("");
-    morseModel.flashTextPhrase(morseModel.generateFieldPracticeQuestion());
+    morseModel.flashTextPhrase(morseModel.getFieldPracticePhrase());
 }
 
 void MainMenu::retryFieldQuestion(){
     ui->reportCorrectLabel->setText("");
     ui->userAnswerBox->setText("");
     morseModel.retryFieldQuestion();
+}
+
+
+void MainMenu::on_nextPhraseButton_clicked()
+{
+    ui->nextPhraseButton->setEnabled(false);
+    ui->nextPhraseButton->setVisible(false);
+    nextFieldQuestion();
 }
 

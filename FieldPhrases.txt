@@ -1,0 +1,6 @@
+sos:SOS is the universal distress signal, and is used often in Morse.
+c:c is an abbreviation for "correct" or "yes".
+n:n is an abbreviation for "incorrect" or "no".
+hh:hh means there was an error in sending the last message.
+nm:nm is an abbreviation for "no more," meaning the transmission is complete.
+hi:hi is how a person would say "lol" in Morse.

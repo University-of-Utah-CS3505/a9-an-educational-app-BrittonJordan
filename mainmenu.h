@@ -42,6 +42,8 @@ private slots:
     void nextFieldQuestion();
     void retryFieldQuestion();
 
+    void on_nextPhraseButton_clicked();
+
 private:
     Ui::MainMenu *ui;
     model morseModel;
