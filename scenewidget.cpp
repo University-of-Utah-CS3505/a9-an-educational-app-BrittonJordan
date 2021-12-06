@@ -2,7 +2,7 @@
 #include <QPainter>
 
 SceneWidget::SceneWidget(QWidget *parent) : QWidget(parent),
-    world(b2Vec2(0.0f, 10.0f))
+    world(b2Vec2(0.0f, 15.0f))
 {
 
 }
