@@ -189,7 +189,8 @@ void model::readFieldPhrasesFile(){
     }
 }
 
-QString model::getFieldPracticePhrase(int index){
+QString model::getFieldPracticePhrase(){
+    int index = rand() % fieldPhrases.length();
     return fieldPhrases[index];
 }
 

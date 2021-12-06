@@ -35,7 +35,7 @@ public:
     StudyQuestion getCurrentQuestion();
     bool isCorrectAnswer(QString answer);
     void flashTextPhrase(QString phrase);
-    QString getFieldPracticePhrase(int index);
+    QString getFieldPracticePhrase();
     QString getCurrentPhraseDescription();
     int getFieldPhrasesCount();
     bool correctFieldAnswer(QString answer);

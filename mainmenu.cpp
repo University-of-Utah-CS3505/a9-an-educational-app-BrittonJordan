@@ -356,7 +356,7 @@ void MainMenu::on_goButton_clicked()
 void MainMenu::on_checkAnswerButton_clicked()
 {
     if (morseModel.correctFieldAnswer(ui->userAnswerBox->toPlainText())){
-        QString reportCorrect = "Correct! ";
+        QString reportCorrect = "Correct!\n";
         reportCorrect.append(morseModel.getCurrentPhraseDescription());
         ui->reportCorrectLabel->setText(reportCorrect);
         ui->nextPhraseButton->setEnabled(true);
@@ -371,8 +371,7 @@ void MainMenu::on_checkAnswerButton_clicked()
 void MainMenu::nextFieldQuestion(){
     ui->reportCorrectLabel->setText("");
     ui->userAnswerBox->setText("");
-    int questionIndex = rand() % morseModel.getFieldPhrasesCount();
-    morseModel.flashTextPhrase(morseModel.getFieldPracticePhrase(questionIndex));
+    morseModel.flashTextPhrase(morseModel.getFieldPracticePhrase());
 }
 
 void MainMenu::retryFieldQuestion(){
