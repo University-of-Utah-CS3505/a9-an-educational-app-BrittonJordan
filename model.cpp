@@ -195,8 +195,7 @@ QString model::getFieldPracticePhrase(){
 }
 
 QString model::getCurrentPhraseDescription(){
-    QString phrase = translator.morseToEnglish(currentPhrase);
-    return fieldPhraseDescriptions[phrase];
+    return fieldPhraseDescriptions[currentPhrase];
 }
 
 int model::getFieldPhrasesCount(){
