@@ -30,7 +30,7 @@
      <string notr="true">background-color: rgb(204, 193, 177);</string>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="topMenu">
      <widget class="QLabel" name="gameTitleLabel">
@@ -288,10 +288,11 @@
         <x>0</x>
         <y>0</y>
         <width>661</width>
-        <height>231</height>
+        <height>411</height>
        </rect>
       </property>
      </widget>
+     <zorder>studyMorseLabel</zorder>
      <zorder>helpPicture</zorder>
      <zorder>questionNumber</zorder>
      <zorder>studyLevelLabel</zorder>
@@ -300,7 +301,6 @@
      <zorder>nextQuestionButton</zorder>
      <zorder>previousQuestionButton</zorder>
      <zorder>helpButton</zorder>
-     <zorder>studyMorseLabel</zorder>
     </widget>
     <widget class="QWidget" name="translateMenu">
      <widget class="QLabel" name="translateLabel">

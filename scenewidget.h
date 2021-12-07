@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <box2d/box2d.h>
 #include <QTimer>
+#include <QMap>
+#include <QPair>
 
 class SceneWidget : public QWidget
 {
@@ -24,8 +26,10 @@ public slots:
 private:
     b2World world;
     b2Body* body;
-    QVector<QImage> confetti;
-    QImage projectile;
+
+    QMap<int, QPair<QImage, int>> confettiMap;
+    QPair<QImage, int> confettiInformation;
+    QVector<b2Body*> confettiBodies;
 };
 
 #endif // SCENEWIDGET_H

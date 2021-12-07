@@ -20,4 +20,12 @@
         <file>A-ZMorse.png</file>
         <file>confetti.png</file>
     </qresource>
+    <qresource prefix="/Confetti">
+        <file>purple.png</file>
+        <file>blue.png</file>
+        <file>green.png</file>
+        <file>yellow.png</file>
+        <file>orange.png</file>
+        <file>red.png</file>
+    </qresource>
 </RCC>
