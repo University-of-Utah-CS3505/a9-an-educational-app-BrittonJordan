@@ -25,6 +25,8 @@ MainMenu::MainMenu(QWidget *parent)
     armyStyle22.setPointSize(22);
     QFont armyStyle14(family);
     armyStyle14.setPointSize(14);
+    QFont armyStyle10(family);
+    armyStyle14.setPointSize(10);
 
     //Set font for buttons
     ui->level1Button->setFont(armyStyle);
@@ -36,10 +38,13 @@ MainMenu::MainMenu(QWidget *parent)
     ui->menuButton->setFont(armyStyle14);
     ui->studyButton->setFont(armyStyle14);
     ui->translateButton->setFont(armyStyle14);
-    ui->fieldPracticeButton->setFont(armyStyle14);
+    ui->fieldPracticeButton->setFont(armyStyle10);
     ui->helpButton->setFont(armyStyle);
     ui->nextQuestionButton->setFont(armyStyle);
     ui->previousQuestionButton->setFont(armyStyle);
+    ui->checkAnswerButton->setFont(armyStyle);
+    ui->nextPhraseButton->setFont(armyStyle);
+    ui->goButton->setFont(armyStyle14);
 
     // Set font for labels
     ui->gameTitleLabel->setFont(armyStyle28);
@@ -49,6 +54,8 @@ MainMenu::MainMenu(QWidget *parent)
     ui->translateLabel->setFont(armyStyle22);
     ui->toTranslateLanguageLabel->setFont(armyStyle14);
     ui->resultLanguageLabel->setFont(armyStyle14);
+    ui->fieldPracticeLabel->setFont(armyStyle22);
+    ui->userAnswerLabel->setFont(armyStyle10);
 
     // When translating, default to English -> Morse
     encode = true;
