@@ -384,7 +384,6 @@ void MainMenu::retryFieldQuestion(){
     QTimer::singleShot(2000, &morseModel, &model::retryFieldQuestion);
 }
 
-
 void MainMenu::on_nextPhraseButton_clicked()
 {
     ui->nextPhraseButton->setEnabled(false);

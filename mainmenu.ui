@@ -1391,18 +1391,21 @@
         <x>100</x>
         <y>410</y>
         <width>411</width>
-        <height>41</height>
+        <height>121</height>
        </rect>
       </property>
       <property name="text">
        <string/>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QPushButton" name="nextPhraseButton">
       <property name="geometry">
        <rect>
         <x>90</x>
-        <y>460</y>
+        <y>540</y>
         <width>121</width>
         <height>32</height>
        </rect>

@@ -15,7 +15,7 @@ class model : public QObject
     bool continueFlashing;
     QString flashingPhrase;
     QString currentPhrase;
-    const int ditTime = 300;
+    const int ditTime = 160;
     QList<QString> fieldPhrases;
     QMap<QString, QString> fieldPhraseDescriptions;
 
