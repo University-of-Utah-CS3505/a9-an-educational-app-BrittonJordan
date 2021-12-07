@@ -190,8 +190,9 @@ void model::readFieldPhrasesFile(){
 }
 
 QString model::getFieldPracticePhrase(){
-    int index = rand() % fieldPhrases.length();
-    return fieldPhrases[index];
+//    int index = rand() % fieldPhrases.length();
+//    return fieldPhrases[index];
+    return fieldPhrases[8];
 }
 
 QString model::getCurrentPhraseDescription(){
@@ -211,11 +212,22 @@ void model::retryFieldQuestion(){
     flashTextPhrase(currentPhrase);
 }
 
+void model::flashNewPhrase(){
+    QString newPhrase = getFieldPracticePhrase();
+    flashTextPhrase(newPhrase);
+}
+
 void model::flashTextPhrase(QString textPhrase){
     currentPhrase = translator.englishToMorse(textPhrase);
     flashingPhrase = translator.englishToMorse(textPhrase);
+
     std::cout<<flashingPhrase.toStdString()<<std::endl;
+    continueFlashing = true;
     flashCharacter();
+}
+
+void model::stopFlashing(){
+    continueFlashing = false;
 }
 
 void model::flashCharacter(){
@@ -251,3 +263,8 @@ void model::flashOffCharacter(){
     emit flashOff();
     QTimer::singleShot(ditTime, this, SLOT(flashCharacter()));
 }
+
+int model::getDitTime(){
+    return ditTime;
+}
+

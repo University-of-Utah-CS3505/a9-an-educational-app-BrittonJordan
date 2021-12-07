@@ -15,7 +15,7 @@ class model : public QObject
     bool continueFlashing;
     QString flashingPhrase;
     QString currentPhrase;
-    const int ditTime = 100;
+    const int ditTime = 300;
     QList<QString> fieldPhrases;
     QMap<QString, QString> fieldPhraseDescriptions;
 
@@ -24,6 +24,7 @@ class model : public QObject
     void generateStudyQuestion(QVector<QString> wordList);
     void generateRandomQuestions(int numberOfQuestions, QVector<QString> wordList);
     void readFieldPhrasesFile();
+    void flashTextPhrase(QString phrase);
 
     static QVector<QString> readWordList(int levelNumber);
 
@@ -34,12 +35,14 @@ public:
     StudyQuestion getPreviousQuestion();
     StudyQuestion getCurrentQuestion();
     bool isCorrectAnswer(QString answer);
-    void flashTextPhrase(QString phrase);
     QString getFieldPracticePhrase();
     QString getCurrentPhraseDescription();
     int getFieldPhrasesCount();
     bool correctFieldAnswer(QString answer);
     void retryFieldQuestion();
+    void flashNewPhrase();
+    void stopFlashing();
+    int getDitTime();
 
 signals:
     void goToStudyMenu();

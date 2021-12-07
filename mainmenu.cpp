@@ -135,6 +135,7 @@ void MainMenu::on_fieldPracticeButton_clicked()
 
     displayFieldPracticeInstructions();
     questionCounter = 1;
+    morseModel.stopFlashing();
 }
 
 void MainMenu::on_nextQuestionButton_clicked(){
@@ -378,13 +379,15 @@ void MainMenu::on_checkAnswerButton_clicked()
 void MainMenu::nextFieldQuestion(){
     ui->reportCorrectLabel->setText("");
     ui->userAnswerBox->setText("");
-    morseModel.flashTextPhrase(morseModel.getFieldPracticePhrase());
+    morseModel.stopFlashing();
+    QTimer::singleShot(morseModel.getDitTime() * 4, &morseModel, &model::flashNewPhrase);
 }
 
 void MainMenu::retryFieldQuestion(){
     ui->reportCorrectLabel->setText("");
     ui->userAnswerBox->setText("");
-    morseModel.retryFieldQuestion();
+    morseModel.stopFlashing();
+    QTimer::singleShot(morseModel.getDitTime() * 4, &morseModel, &model::retryFieldQuestion);
 }
 
 
