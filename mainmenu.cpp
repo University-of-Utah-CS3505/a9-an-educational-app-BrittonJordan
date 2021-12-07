@@ -28,8 +28,10 @@ MainMenu::MainMenu(QWidget *parent)
     armyStyle22.setPointSize(22);
     QFont armyStyle14(family);
     armyStyle14.setPointSize(14);
+    QFont armyStyle12(family);
+    armyStyle12.setPointSize(12);
     QFont armyStyle10(family);
-    armyStyle14.setPointSize(10);
+    armyStyle10.setPointSize(10);
 
     //Set font for buttons
     ui->level1Button->setFont(armyStyle);
@@ -38,10 +40,10 @@ MainMenu::MainMenu(QWidget *parent)
     ui->level4Button->setFont(armyStyle);
     ui->level5Button->setFont(armyStyle);
     ui->level6Button->setFont(armyStyle);
-    ui->menuButton->setFont(armyStyle14);
-    ui->studyButton->setFont(armyStyle14);
-    ui->translateButton->setFont(armyStyle14);
-    ui->fieldPracticeButton->setFont(armyStyle10);
+    ui->menuButton->setFont(armyStyle12);
+    ui->studyButton->setFont(armyStyle12);
+    ui->translateButton->setFont(armyStyle12);
+    ui->fieldPracticeButton->setFont(armyStyle12);
     ui->helpButton->setFont(armyStyle);
     ui->nextQuestionButton->setFont(armyStyle);
     ui->previousQuestionButton->setFont(armyStyle);
