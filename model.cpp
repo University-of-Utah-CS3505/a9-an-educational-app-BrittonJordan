@@ -231,7 +231,7 @@ void model::stopFlashing(){
 
 void model::flashCharacter(){
     int phraseLength = flashingPhrase.length();
-    if(phraseLength == 0 || !continueFlashing)
+    if(phraseLength == 0)
         return;
 
     const int dahTime = 3*ditTime;
@@ -255,6 +255,10 @@ void model::flashCharacter(){
         waitTime = wordSpaceTime;
     }
     flashingPhrase = flashingPhrase.right(phraseLength - 1);
+    if(!continueFlashing){
+        emit flashOff();
+        return;
+    }
     QTimer::singleShot(waitTime, this, SLOT(flashOffCharacter()));
 }
 

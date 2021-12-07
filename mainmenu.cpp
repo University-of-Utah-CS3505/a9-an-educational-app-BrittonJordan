@@ -374,14 +374,14 @@ void MainMenu::nextFieldQuestion(){
     ui->reportCorrectLabel->setText("");
     ui->userAnswerBox->setText("");
     morseModel.stopFlashing();
-    QTimer::singleShot(morseModel.getDitTime() * 4, &morseModel, &model::flashNewPhrase);
+    QTimer::singleShot(2000, &morseModel, &model::flashNewPhrase);
 }
 
 void MainMenu::retryFieldQuestion(){
     ui->reportCorrectLabel->setText("");
     ui->userAnswerBox->setText("");
     morseModel.stopFlashing();
-    QTimer::singleShot(morseModel.getDitTime() * 4, &morseModel, &model::retryFieldQuestion);
+    QTimer::singleShot(2000, &morseModel, &model::retryFieldQuestion);
 }
 
 
