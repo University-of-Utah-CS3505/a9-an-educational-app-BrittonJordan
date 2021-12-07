@@ -40,9 +40,9 @@ MainMenu::MainMenu(QWidget *parent)
     ui->level4Button->setFont(armyStyle);
     ui->level5Button->setFont(armyStyle);
     ui->level6Button->setFont(armyStyle);
-    ui->menuButton->setFont(armyStyle12);
-    ui->studyButton->setFont(armyStyle12);
-    ui->translateButton->setFont(armyStyle12);
+    ui->menuButton->setFont(armyStyle14);
+    ui->studyButton->setFont(armyStyle14);
+    ui->translateButton->setFont(armyStyle14);
     ui->fieldPracticeButton->setFont(armyStyle12);
     ui->helpButton->setFont(armyStyle);
     ui->nextQuestionButton->setFont(armyStyle);
