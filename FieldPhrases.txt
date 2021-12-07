@@ -4,3 +4,6 @@ n:n is an abbreviation for "incorrect" or "no".
 hh:hh means there was an error in sending the last message.
 nm:nm is an abbreviation for "no more," meaning the transmission is complete.
 hi:hi is how a person would say "lol" in Morse.
+the quick brown fox jumps over the lazy dog:This sentence is a panagram, meaning it contains every letter of the English alphabet
+what hath god wrought:Sent by inventor Samuel F.B. Morse on May 24, 1844, over an experimental line from Washington, D.C., to Baltimore, the message said: "What hath God wrought?" Taken from the Bible, Numbers 23:23, and recorded on a paper tape, the phrase had been suggested to Morse by Annie Ellsworth, the young daughter of a friend.
+there was a young fellow of italy who diddled the public quite prettily:This is the message sent in the first wireless hack, by Nevil Maskelyne
