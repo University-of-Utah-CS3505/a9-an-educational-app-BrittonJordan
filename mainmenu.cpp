@@ -380,7 +380,7 @@ void MainMenu::nextFieldQuestion(){
 void MainMenu::retryFieldQuestion(){
     ui->reportCorrectLabel->setText("");
     ui->userAnswerBox->setText("");
-    morseModel.stopFlashing();
+   // morseModel.stopFlashing();
     QTimer::singleShot(2000, &morseModel, &model::retryFieldQuestion);
 }
 

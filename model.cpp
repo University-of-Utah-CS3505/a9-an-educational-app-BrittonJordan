@@ -204,7 +204,7 @@ int model::getFieldPhrasesCount(){
 }
 
 bool model::correctFieldAnswer(QString answer){
-    return translator.englishToMorse(answer.trimmed()) == currentPhrase;
+    return answer.trimmed() == currentPhrase;
 }
 
 void model::retryFieldQuestion(){
@@ -217,10 +217,10 @@ void model::flashNewPhrase(){
 }
 
 void model::flashTextPhrase(QString textPhrase){
-    currentPhrase = translator.englishToMorse(textPhrase);
+    currentPhrase = textPhrase;
     flashingPhrase = translator.englishToMorse(textPhrase);
 
-    std::cout<<flashingPhrase.toStdString()<<std::endl;
+    std::cout<<"Flashing: " << flashingPhrase.toStdString()<<std::endl;
     continueFlashing = true;
     flashCharacter();
 }
