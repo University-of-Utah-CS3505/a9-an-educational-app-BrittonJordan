@@ -166,26 +166,26 @@ void MainMenu::on_fieldPracticeButton_clicked()
 }
 
 void MainMenu::on_nextQuestionButton_clicked(){
-//    if(morseModel.isCorrectAnswer(ui->userInput->toPlainText())){
-//        std::cout << "correct" << std::endl;
+    if(morseModel.isCorrectAnswer(ui->userInput->toPlainText())){
+        std::cout << "correct" << std::endl;
 
-//        questionCounter++;
-//        ui->questionNumber->setText("Question Number: " +QString::number(questionCounter));
+        questionCounter++;
+        ui->questionNumber->setText("Question Number: " +QString::number(questionCounter));
 
-//        ui->userInput->clear();
+        ui->userInput->clear();
 
-//        morseModel.getNextQuestion();
-//        StudyQuestion question = morseModel.getCurrentQuestion();
-//        ui->studyMorseLabel->setText(question.getQuestion());
-//    }
-//    else{
-//        std::cout << "wrong" << std::endl;
-//    }
+        morseModel.getNextQuestion();
+        StudyQuestion question = morseModel.getCurrentQuestion();
+        ui->studyMorseLabel->setText(question.getQuestion());
+    }
+    else{
+        std::cout << "wrong" << std::endl;
+    }
 
-    morseModel.getNextQuestion();
-    StudyQuestion question = morseModel.getCurrentQuestion();
-    ui->studyMorseLabel->setText(question.getQuestion());
-    ui->userInput->clear();
+//    morseModel.getNextQuestion();
+//    StudyQuestion question = morseModel.getCurrentQuestion();
+//    ui->studyMorseLabel->setText(question.getQuestion());
+//    ui->userInput->clear();
 }
 
 void MainMenu::on_previousQuestionButton_clicked(){
@@ -230,10 +230,12 @@ void MainMenu::level1(){
 
     ui->studyLevelLabel->setText("Study Level: 1");
 
+    ui->helpButton->setVisible(true);
     QPixmap pixmap(":/Images/A-EMorse.png");
-        ui->helpPicture->setPixmap(pixmap);
-        ui->helpPicture->setScaledContents(true);
-        ui->helpPicture->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+    ui->helpPicture->setPixmap(pixmap);
+    int w = ui->helpPicture->width();
+    int h = ui->helpPicture->height();
+    ui->helpPicture->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
 
     StudyQuestion question = morseModel.getCurrentQuestion();
     ui->studyMorseLabel->setText(question.getQuestion());
@@ -245,10 +247,12 @@ void MainMenu::level2(){
 
     ui->studyLevelLabel->setText("Study Level: 2");
 
+    ui->helpButton->setVisible(true);
     QPixmap pixmap(":/Images/F-JMorse.png");
-        ui->helpPicture->setPixmap(pixmap);
-        ui->helpPicture->setScaledContents(true);
-        ui->helpPicture->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+    ui->helpPicture->setPixmap(pixmap);
+    int w = ui->helpPicture->width();
+    int h = ui->helpPicture->height();
+    ui->helpPicture->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
 
     StudyQuestion question = morseModel.getCurrentQuestion();
     ui->studyMorseLabel->setText(question.getQuestion());
@@ -260,10 +264,12 @@ void MainMenu::level3(){
 
     ui->studyLevelLabel->setText("Study Level: 3");
 
+    ui->helpButton->setVisible(true);
     QPixmap pixmap(":/Images/K-PMorse.png");
-        ui->helpPicture->setPixmap(pixmap);
-        ui->helpPicture->setScaledContents(true);
-        ui->helpPicture->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+    ui->helpPicture->setPixmap(pixmap);
+    int w = ui->helpPicture->width();
+    int h = ui->helpPicture->height();
+    ui->helpPicture->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
 
     StudyQuestion question = morseModel.getCurrentQuestion();
     ui->studyMorseLabel->setText(question.getQuestion());
@@ -275,10 +281,12 @@ void MainMenu::level4(){
 
     ui->studyLevelLabel->setText("Study Level: 4");
 
+    ui->helpButton->setVisible(true);
     QPixmap pixmap(":/Images/Q-UMorse.png");
-        ui->helpPicture->setPixmap(pixmap);
-        ui->helpPicture->setScaledContents(true);
-        ui->helpPicture->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+    ui->helpPicture->setPixmap(pixmap);
+    int w = ui->helpPicture->width();
+    int h = ui->helpPicture->height();
+    ui->helpPicture->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
 
     StudyQuestion question = morseModel.getCurrentQuestion();
     ui->studyMorseLabel->setText(question.getQuestion());
@@ -290,10 +298,12 @@ void MainMenu::level5(){
 
     ui->studyLevelLabel->setText("Study Level: 5");
 
+    ui->helpButton->setVisible(true);
     QPixmap pixmap(":/Images/V-ZMorse.png");
-        ui->helpPicture->setPixmap(pixmap);
-        ui->helpPicture->setScaledContents(true);
-        ui->helpPicture->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+    ui->helpPicture->setPixmap(pixmap);
+    int w = ui->helpPicture->width();
+    int h = ui->helpPicture->height();
+    ui->helpPicture->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
 
     StudyQuestion question = morseModel.getCurrentQuestion();
     ui->studyMorseLabel->setText(question.getQuestion());
@@ -304,11 +314,8 @@ void MainMenu::level6(){
     morseModel.generateLevel(6);
 
     ui->studyLevelLabel->setText("Study Level: 6");
-
-    QPixmap pixmap(":/Images/A-ZMorse.png");
-        ui->helpPicture->setPixmap(pixmap);
-        ui->helpPicture->setScaledContents(true);
-        ui->helpPicture->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+    ui->helpButton->setVisible(false);
+    ui->helpPicture->setVisible(false);
 
     StudyQuestion question = morseModel.getCurrentQuestion();
     ui->studyMorseLabel->setText(question.getQuestion());
@@ -411,14 +418,14 @@ void MainMenu::nextFieldQuestion(){
     ui->reportCorrectLabel->setText("");
     ui->userAnswerBox->setText("");
     morseModel.stopFlashing();
-    QTimer::singleShot(2000, &morseModel, &model::flashNewPhrase);
+    QTimer::singleShot(1000, &morseModel, &model::flashNewPhrase);
 }
 
 void MainMenu::retryFieldQuestion(){
     ui->reportCorrectLabel->setText("");
     ui->userAnswerBox->setText("");
-   // morseModel.stopFlashing();
-    QTimer::singleShot(2000, &morseModel, &model::retryFieldQuestion);
+    morseModel.stopFlashing();
+    QTimer::singleShot(1000, &morseModel, &model::retryFieldQuestion);
 }
 
 void MainMenu::on_nextPhraseButton_clicked()
