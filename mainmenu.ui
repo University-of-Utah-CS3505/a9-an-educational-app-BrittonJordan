@@ -30,7 +30,7 @@
      <string notr="true">background-color: rgb(204, 193, 177);</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="topMenu">
      <widget class="QLabel" name="gameTitleLabel">
@@ -282,7 +282,7 @@
        <string>help for specific level letters</string>
       </property>
      </widget>
-     <widget class="SceneWidget" name="animationWidget" native="true">
+     <widget class="SceneWidget" name="animationWidgetStudy" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -296,7 +296,7 @@
      <zorder>helpPicture</zorder>
      <zorder>questionNumber</zorder>
      <zorder>studyLevelLabel</zorder>
-     <zorder>animationWidget</zorder>
+     <zorder>animationWidgetStudy</zorder>
      <zorder>userInput</zorder>
      <zorder>nextQuestionButton</zorder>
      <zorder>previousQuestionButton</zorder>
@@ -1358,6 +1358,15 @@
         <height>31</height>
        </rect>
       </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="lineWrapMode">
+       <enum>QTextEdit::NoWrap</enum>
+      </property>
      </widget>
      <widget class="QLabel" name="userAnswerLabel">
       <property name="geometry">
@@ -1414,15 +1423,26 @@
        <string>Next phrase</string>
       </property>
      </widget>
-     <zorder>fieldPracticeLabel</zorder>
-     <zorder>flashLabel</zorder>
-     <zorder>userAnswerBox</zorder>
-     <zorder>userAnswerLabel</zorder>
-     <zorder>checkAnswerButton</zorder>
+     <widget class="SceneWidget" name="animationWidgetFieldPractice" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>661</width>
+        <height>381</height>
+       </rect>
+      </property>
+     </widget>
      <zorder>reportCorrectLabel</zorder>
+     <zorder>flashLabel</zorder>
      <zorder>instructionLabel</zorder>
+     <zorder>fieldPracticeLabel</zorder>
+     <zorder>userAnswerLabel</zorder>
+     <zorder>animationWidgetFieldPractice</zorder>
+     <zorder>checkAnswerButton</zorder>
      <zorder>goButton</zorder>
      <zorder>nextPhraseButton</zorder>
+     <zorder>userAnswerBox</zorder>
     </widget>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget">

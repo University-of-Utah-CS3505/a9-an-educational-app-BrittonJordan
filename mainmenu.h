@@ -36,7 +36,8 @@ private slots:
     void updateTranslation();
     void flashOnLabel();
     void flashOffLabel();
-    void handleConfettiFalling();
+    void handleConfettiFallingStudy();
+    void handleConfettiFallingFieldPractice();
     void on_goButton_clicked();
     void on_checkAnswerButton_clicked();
     void nextFieldQuestion();

@@ -11,8 +11,11 @@ MainMenu::MainMenu(QWidget *parent)
     ui->menuStack->setCurrentIndex(0); // Start on the Main Menu
     ui->helpPicture->setVisible(false);
 
-    ui->animationWidget->hide();
-    ui->animationWidget->setDisabled(true);
+    ui->animationWidgetStudy->hide();
+    ui->animationWidgetStudy->setDisabled(true);
+
+    ui->animationWidgetFieldPractice->hide();
+    ui->animationWidgetFieldPractice->setDisabled(true);
 
     //Font stuff
     int id = QFontDatabase::addApplicationFont(":/Fonts/armalite.ttf");
@@ -94,10 +97,13 @@ MainMenu::MainMenu(QWidget *parent)
     connect(&morseModel, &model::flashOff, this, &MainMenu::flashOffLabel);
 
     //Rain conffeti
-    connect(&morseModel, &model::rainConfetti, this, &MainMenu::handleConfettiFalling);
+    connect(&morseModel, &model::rainConfetti, this, &MainMenu::handleConfettiFallingStudy);
 
-    //Handle SceneWidget Confetti Timer
-    connect(&ui->animationWidget->confettiTimer, &QTimer::timeout, ui->animationWidget, &SceneWidget::updateWorld);
+    //Handle Study Confetti Timer
+    connect(&ui->animationWidgetStudy->confettiTimer, &QTimer::timeout, ui->animationWidgetStudy, &SceneWidget::updateWorld);
+
+    //Handle Field Practice Confetti Timer
+    connect(&ui->animationWidgetFieldPractice->confettiTimer, &QTimer::timeout, ui->animationWidgetFieldPractice, &SceneWidget::updateWorld);
 }
 
 MainMenu::~MainMenu()
@@ -111,6 +117,11 @@ void MainMenu::on_studyButton_clicked()
     ui->studyMorseLabel->clear();
 
     questionCounter = 1;
+    ui->animationWidgetStudy->hide();
+    ui->animationWidgetStudy->setDisabled(true);
+
+    ui->animationWidgetFieldPractice->hide();
+    ui->animationWidgetFieldPractice->setDisabled(true);
 }
 
 void MainMenu::on_menuButton_clicked()
@@ -119,6 +130,11 @@ void MainMenu::on_menuButton_clicked()
     ui->studyMorseLabel->clear();
 
     questionCounter = 1;
+    ui->animationWidgetStudy->hide();
+    ui->animationWidgetStudy->setDisabled(true);
+
+    ui->animationWidgetFieldPractice->hide();
+    ui->animationWidgetFieldPractice->setDisabled(true);
 }
 
 void MainMenu::on_translateButton_clicked(){
@@ -126,6 +142,11 @@ void MainMenu::on_translateButton_clicked(){
     ui->studyMorseLabel->clear();
 
     questionCounter = 1;
+    ui->animationWidgetStudy->hide();
+    ui->animationWidgetStudy->setDisabled(true);
+
+    ui->animationWidgetFieldPractice->hide();
+    ui->animationWidgetFieldPractice->setDisabled(true);
 }
 
 void MainMenu::on_fieldPracticeButton_clicked()
@@ -136,6 +157,12 @@ void MainMenu::on_fieldPracticeButton_clicked()
     displayFieldPracticeInstructions();
     questionCounter = 1;
     morseModel.stopFlashing();
+
+    ui->animationWidgetStudy->hide();
+    ui->animationWidgetStudy->setDisabled(true);
+
+    ui->animationWidgetFieldPractice->hide();
+    ui->animationWidgetFieldPractice->setDisabled(true);
 }
 
 void MainMenu::on_nextQuestionButton_clicked(){
@@ -181,12 +208,20 @@ void MainMenu::on_helpButton_clicked(){
         ui->helpPicture->setVisible(true);
 }
 
-void MainMenu::handleConfettiFalling(){
-    ui->animationWidget->setDisabled(false);
-    ui->animationWidget->show();
+void MainMenu::handleConfettiFallingStudy(){
+    ui->animationWidgetStudy->setDisabled(false);
+    ui->animationWidgetStudy->show();
 
-    ui->animationWidget->resetConfetti();
-    ui->animationWidget->startConfetti();
+    ui->animationWidgetStudy->resetConfetti();
+    ui->animationWidgetStudy->startConfetti();
+}
+
+void MainMenu::handleConfettiFallingFieldPractice(){
+    ui->animationWidgetFieldPractice->setDisabled(false);
+    ui->animationWidgetFieldPractice->show();
+
+    ui->animationWidgetFieldPractice->resetConfetti();
+    ui->animationWidgetFieldPractice->startConfetti();
 }
 
 void MainMenu::level1(){
@@ -363,6 +398,8 @@ void MainMenu::on_checkAnswerButton_clicked()
         ui->reportCorrectLabel->setText(reportCorrect);
         ui->nextPhraseButton->setEnabled(true);
         ui->nextPhraseButton->setVisible(true);
+
+        handleConfettiFallingFieldPractice();
 
     } else {
         ui->reportCorrectLabel->setText("Try again!");
