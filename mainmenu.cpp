@@ -190,7 +190,6 @@ void MainMenu::handleConfettiFalling(){
 }
 
 void MainMenu::level1(){
-    std::cout<<"Level 1 Begins"<<std::endl;
     ui->menuStack->setCurrentIndex(2);
     morseModel.generateLevel(1);
 
@@ -206,7 +205,6 @@ void MainMenu::level1(){
 }
 
 void MainMenu::level2(){
-    std::cout<<"Level 2 Begins"<<std::endl;
     ui->menuStack->setCurrentIndex(2);
     morseModel.generateLevel(2);
 
@@ -222,7 +220,6 @@ void MainMenu::level2(){
 }
 
 void MainMenu::level3(){
-    std::cout<<"Level 3 Begins"<<std::endl;
     ui->menuStack->setCurrentIndex(2);
     morseModel.generateLevel(3);
 
@@ -238,7 +235,6 @@ void MainMenu::level3(){
 }
 
 void MainMenu::level4(){
-    std::cout<<"Level 4 Begins"<<std::endl;
     ui->menuStack->setCurrentIndex(2);
     morseModel.generateLevel(4);
 
@@ -254,7 +250,6 @@ void MainMenu::level4(){
 }
 
 void MainMenu::level5(){
-    std::cout<<"Level 5 Begins"<<std::endl;
     ui->menuStack->setCurrentIndex(2);
     morseModel.generateLevel(5);
 
@@ -270,7 +265,6 @@ void MainMenu::level5(){
 }
 
 void MainMenu::level6(){
-    std::cout<<"Level 6 Begins"<<std::endl;
     ui->menuStack->setCurrentIndex(2);
     morseModel.generateLevel(6);
 

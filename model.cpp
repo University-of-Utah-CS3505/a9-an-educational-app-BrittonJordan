@@ -190,9 +190,8 @@ void model::readFieldPhrasesFile(){
 }
 
 QString model::getFieldPracticePhrase(){
-//    int index = rand() % fieldPhrases.length();
-//    return fieldPhrases[index];
-    return fieldPhrases[8];
+    int index = rand() % fieldPhrases.length();
+    return fieldPhrases[index];
 }
 
 QString model::getCurrentPhraseDescription(){
