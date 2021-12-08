@@ -27,6 +27,7 @@ private slots:
     void on_fieldPracticeButton_clicked();
     void on_helpButton_clicked();
     void on_switchEncodeDecode_clicked();
+    void on_userInput_textChanged();
     void level1();
     void level2();
     void level3();
@@ -42,13 +43,9 @@ private slots:
     void on_checkAnswerButton_clicked();
     void nextFieldQuestion();
     void retryFieldQuestion();
-
     void on_nextPhraseButton_clicked();
-
     void on_skipQuestionButton_clicked();
-
     void on_userAnswerBox_textChanged();
-
     void on_startOverButton_clicked();
 
 private:

@@ -228,6 +228,14 @@ void MainMenu::handleConfettiFallingFieldPractice(){
     ui->animationWidgetFieldPractice->startConfetti();
 }
 
+void MainMenu::on_userInput_textChanged(){
+    QString text = ui->userInput->toPlainText();
+    if (text.endsWith('\n')){
+        ui->userInput->setText(text.chopped(1));
+        on_nextQuestionButton_clicked();
+    }
+}
+
 void MainMenu::level1(){
     ui->menuStack->setCurrentIndex(2);
     morseModel.generateLevel(1);
@@ -360,7 +368,6 @@ void MainMenu::flashOffLabel(){
     ui->flashLabel->setStyleSheet(QString("background-color: rgb(180, 170, 156);"));
 }
 
-
 void MainMenu::displayFieldPracticeInstructions(){
     ui->goButton->setEnabled(true);
     ui->goButton->setVisible(true);
@@ -386,6 +393,7 @@ void MainMenu::displayFieldPracticeInstructions(){
     ui->startOverButton->setEnabled(false);
     ui->startOverButton->setVisible(false);
 }
+
 void MainMenu::on_goButton_clicked()
 {
     ui->goButton->setEnabled(false);
@@ -451,13 +459,11 @@ void MainMenu::on_nextPhraseButton_clicked()
     nextFieldQuestion();
 }
 
-
 void MainMenu::on_skipQuestionButton_clicked()
 {
     morseModel.stopFlashing();
     QTimer::singleShot(1000, this, &MainMenu::nextFieldQuestion);
 }
-
 
 void MainMenu::on_userAnswerBox_textChanged()
 {
@@ -467,7 +473,6 @@ void MainMenu::on_userAnswerBox_textChanged()
         on_checkAnswerButton_clicked();
     }
 }
-
 
 void MainMenu::on_startOverButton_clicked()
 {

@@ -30,7 +30,7 @@
      <string notr="true">background-color: rgb(204, 193, 177);</string>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="topMenu">
      <widget class="QLabel" name="gameTitleLabel">
@@ -288,7 +288,7 @@
         <x>0</x>
         <y>0</y>
         <width>661</width>
-        <height>411</height>
+        <height>601</height>
        </rect>
       </property>
      </widget>
