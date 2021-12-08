@@ -19,6 +19,7 @@
         <file>V-ZMorse.png</file>
         <file>A-ZMorse.png</file>
         <file>confetti.png</file>
+        <file>FullMorseCodeChart.png</file>
     </qresource>
     <qresource prefix="/Confetti">
         <file>purple.png</file>
