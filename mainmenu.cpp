@@ -241,6 +241,7 @@ void MainMenu::level1(){
     morseModel.generateLevel(1);
 
     ui->studyLevelLabel->setText("Study Level: 1");
+    ui->questionNumber->setText("Question Number: " +QString::number(questionCounter));
 
     ui->helpButton->setVisible(true);
     QPixmap pixmap(":/Images/A-EMorse.png");
@@ -258,6 +259,7 @@ void MainMenu::level2(){
     morseModel.generateLevel(2);
 
     ui->studyLevelLabel->setText("Study Level: 2");
+    ui->questionNumber->setText("Question Number: " +QString::number(questionCounter));
 
     ui->helpButton->setVisible(true);
     QPixmap pixmap(":/Images/F-JMorse.png");
@@ -275,6 +277,7 @@ void MainMenu::level3(){
     morseModel.generateLevel(3);
 
     ui->studyLevelLabel->setText("Study Level: 3");
+    ui->questionNumber->setText("Question Number: " +QString::number(questionCounter));
 
     ui->helpButton->setVisible(true);
     QPixmap pixmap(":/Images/K-PMorse.png");
@@ -292,6 +295,7 @@ void MainMenu::level4(){
     morseModel.generateLevel(4);
 
     ui->studyLevelLabel->setText("Study Level: 4");
+    ui->questionNumber->setText("Question Number: " +QString::number(questionCounter));
 
     ui->helpButton->setVisible(true);
     QPixmap pixmap(":/Images/Q-UMorse.png");
@@ -309,6 +313,7 @@ void MainMenu::level5(){
     morseModel.generateLevel(5);
 
     ui->studyLevelLabel->setText("Study Level: 5");
+    ui->questionNumber->setText("Question Number: " +QString::number(questionCounter));
 
     ui->helpButton->setVisible(true);
     QPixmap pixmap(":/Images/V-ZMorse.png");
@@ -326,6 +331,7 @@ void MainMenu::level6(){
     morseModel.generateLevel(6);
 
     ui->studyLevelLabel->setText("Study Level: 6");
+    ui->questionNumber->setText("Question Number: " +QString::number(questionCounter));
     ui->helpButton->setVisible(false);
     ui->helpPicture->setVisible(false);
 
