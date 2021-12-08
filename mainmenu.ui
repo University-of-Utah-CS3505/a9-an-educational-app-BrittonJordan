@@ -1384,10 +1384,10 @@
      <widget class="QPushButton" name="checkAnswerButton">
       <property name="geometry">
        <rect>
-        <x>420</x>
+        <x>430</x>
         <y>360</y>
         <width>101</width>
-        <height>31</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
@@ -1429,8 +1429,40 @@
         <x>0</x>
         <y>0</y>
         <width>661</width>
-        <height>381</height>
+        <height>601</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="skipQuestionButton">
+      <property name="geometry">
+       <rect>
+        <x>435</x>
+        <y>290</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>skip question</string>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="startOverButton">
+      <property name="geometry">
+       <rect>
+        <x>75</x>
+        <y>284</y>
+        <width>113</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>start over</string>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
       </property>
      </widget>
      <zorder>reportCorrectLabel</zorder>
@@ -1439,10 +1471,12 @@
      <zorder>fieldPracticeLabel</zorder>
      <zorder>userAnswerLabel</zorder>
      <zorder>animationWidgetFieldPractice</zorder>
-     <zorder>checkAnswerButton</zorder>
      <zorder>goButton</zorder>
-     <zorder>nextPhraseButton</zorder>
      <zorder>userAnswerBox</zorder>
+     <zorder>nextPhraseButton</zorder>
+     <zorder>checkAnswerButton</zorder>
+     <zorder>skipQuestionButton</zorder>
+     <zorder>startOverButton</zorder>
     </widget>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget">

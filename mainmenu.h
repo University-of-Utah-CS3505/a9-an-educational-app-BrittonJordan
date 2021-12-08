@@ -45,6 +45,12 @@ private slots:
 
     void on_nextPhraseButton_clicked();
 
+    void on_skipQuestionButton_clicked();
+
+    void on_userAnswerBox_textChanged();
+
+    void on_startOverButton_clicked();
+
 private:
     Ui::MainMenu *ui;
     model morseModel;

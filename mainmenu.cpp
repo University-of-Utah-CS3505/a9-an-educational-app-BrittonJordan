@@ -50,6 +50,8 @@ MainMenu::MainMenu(QWidget *parent)
     ui->checkAnswerButton->setFont(armyStyle);
     ui->nextPhraseButton->setFont(armyStyle);
     ui->goButton->setFont(armyStyle14);
+    ui->skipQuestionButton->setFont(armyStyle10);
+    ui->startOverButton->setFont(armyStyle10);
 
     // Set font for labels
     ui->gameTitleLabel->setFont(armyStyle28);
@@ -377,6 +379,12 @@ void MainMenu::displayFieldPracticeInstructions(){
 
     ui->nextPhraseButton->setEnabled(false);
     ui->nextPhraseButton->setVisible(false);
+
+    ui->skipQuestionButton->setEnabled(false);
+    ui->skipQuestionButton->setVisible(false);
+
+    ui->startOverButton->setEnabled(false);
+    ui->startOverButton->setVisible(false);
 }
 void MainMenu::on_goButton_clicked()
 {
@@ -394,6 +402,12 @@ void MainMenu::on_goButton_clicked()
 
     ui->userAnswerBox->setEnabled(true);
     ui->userAnswerBox->setVisible(true);
+
+    ui->skipQuestionButton->setEnabled(true);
+    ui->skipQuestionButton->setVisible(true);
+
+    ui->startOverButton->setEnabled(true);
+    ui->startOverButton->setVisible(true);
 
    QTimer::singleShot(1250, this, &MainMenu::nextFieldQuestion);
 
@@ -435,5 +449,29 @@ void MainMenu::on_nextPhraseButton_clicked()
     ui->nextPhraseButton->setEnabled(false);
     ui->nextPhraseButton->setVisible(false);
     nextFieldQuestion();
+}
+
+
+void MainMenu::on_skipQuestionButton_clicked()
+{
+    morseModel.stopFlashing();
+    QTimer::singleShot(1000, this, &MainMenu::nextFieldQuestion);
+}
+
+
+void MainMenu::on_userAnswerBox_textChanged()
+{
+    QString text = ui->userAnswerBox->toPlainText();
+    if (text.endsWith('\n')){
+        ui->userAnswerBox->setText(text.chopped(1));
+        on_checkAnswerButton_clicked();
+    }
+}
+
+
+void MainMenu::on_startOverButton_clicked()
+{
+    morseModel.stopFlashing();
+    QTimer::singleShot(1500, &morseModel, &model::retryFieldQuestion);
 }
 
