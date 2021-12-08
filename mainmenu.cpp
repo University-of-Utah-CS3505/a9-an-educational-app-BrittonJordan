@@ -392,6 +392,12 @@ void MainMenu::displayFieldPracticeInstructions(){
 
     ui->startOverButton->setEnabled(false);
     ui->startOverButton->setVisible(false);
+
+    ui->flashingSpeedLabel->setEnabled(false);
+    ui->flashingSpeedLabel->setVisible(false);
+
+    ui->increaseFlashingSpeed->setEnabled(false);
+    ui->increaseFlashingSpeed->setVisible(false);
 }
 
 void MainMenu::on_goButton_clicked()
@@ -416,6 +422,12 @@ void MainMenu::on_goButton_clicked()
 
     ui->startOverButton->setEnabled(true);
     ui->startOverButton->setVisible(true);
+
+    ui->flashingSpeedLabel->setEnabled(true);
+    ui->flashingSpeedLabel->setVisible(true);
+
+    ui->increaseFlashingSpeed->setEnabled(true);
+    ui->increaseFlashingSpeed->setVisible(true);
 
    QTimer::singleShot(1250, this, &MainMenu::nextFieldQuestion);
 
@@ -478,5 +490,10 @@ void MainMenu::on_startOverButton_clicked()
 {
     morseModel.stopFlashing();
     QTimer::singleShot(1500, &morseModel, &model::retryFieldQuestion);
+}
+
+void MainMenu::on_increaseFlashingSpeed_sliderMoved(int position)
+{
+    morseModel.changeDitTime(position);
 }
 

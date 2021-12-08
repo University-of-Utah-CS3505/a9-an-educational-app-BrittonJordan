@@ -1474,6 +1474,15 @@
         <height>16</height>
        </rect>
       </property>
+      <property name="minimum">
+       <number>50</number>
+      </property>
+      <property name="maximum">
+       <number>160</number>
+      </property>
+      <property name="sliderPosition">
+       <number>160</number>
+      </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>

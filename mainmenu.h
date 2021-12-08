@@ -48,6 +48,8 @@ private slots:
     void on_userAnswerBox_textChanged();
     void on_startOverButton_clicked();
 
+    void on_increaseFlashingSpeed_sliderMoved(int position);
+
 private:
     Ui::MainMenu *ui;
     model morseModel;

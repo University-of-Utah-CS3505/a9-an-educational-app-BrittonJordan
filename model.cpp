@@ -270,3 +270,7 @@ int model::getDitTime(){
     return ditTime;
 }
 
+void model::changeDitTime(int sliderPosition){
+    ditTime = sliderPosition;
+}
+
