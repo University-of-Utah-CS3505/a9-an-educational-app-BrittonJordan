@@ -26,5 +26,5 @@ void StudyQuestion::setTitle(QString title){
 }
 
 bool StudyQuestion::checkIsCorrect(QString answer){
-    return this->answer == answer;
+    return this->answer.toLower() == answer.toLower();
 }
