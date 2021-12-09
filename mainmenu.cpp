@@ -19,6 +19,12 @@ MainMenu::MainMenu(QWidget *parent)
 
     ui->increaseFlashingSpeed->setStyleSheet("QSlider::groove:horizontal {background-color:grey;}" "QSlider::handle:horizontal {background-color:blue; height: 8px; width: 8px;}");
 
+    QPixmap pixmap(":/Images/FullMorseCodeChart.png");
+    ui->topMenuPictureLabel->setPixmap(pixmap);
+    int w = ui->topMenuPictureLabel->width();
+    int h = ui->topMenuPictureLabel->height();
+    ui->topMenuPictureLabel->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
+
     //Font stuff
     int id = QFontDatabase::addApplicationFont(":/Fonts/armalite.ttf");
     QString family = QFontDatabase::applicationFontFamilies(id).at(0);
