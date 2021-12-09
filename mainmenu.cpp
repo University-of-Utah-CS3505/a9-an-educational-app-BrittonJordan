@@ -17,6 +17,8 @@ MainMenu::MainMenu(QWidget *parent)
     ui->animationWidgetFieldPractice->hide();
     ui->animationWidgetFieldPractice->setDisabled(true);
 
+    ui->increaseFlashingSpeed->setStyleSheet("QSlider::groove:horizontal {background-color:grey;}" "QSlider::handle:horizontal {background-color:blue; height: 8px; width: 8px;}");
+
     //Font stuff
     int id = QFontDatabase::addApplicationFont(":/Fonts/armalite.ttf");
     QString family = QFontDatabase::applicationFontFamilies(id).at(0);
@@ -115,6 +117,8 @@ MainMenu::~MainMenu()
     delete ui;
 }
 
+//Public UI slots
+
 void MainMenu::on_studyButton_clicked()
 {
     ui->menuStack->setCurrentIndex(1); // Switch to Study menu
@@ -167,6 +171,10 @@ void MainMenu::on_fieldPracticeButton_clicked()
 
     ui->animationWidgetFieldPractice->hide();
     ui->animationWidgetFieldPractice->setDisabled(true);
+
+    ui->reportCorrectLabel->setText("");
+
+    ui->userAnswerBox->setText("");
 }
 
 void MainMenu::on_nextQuestionButton_clicked(){
@@ -185,11 +193,6 @@ void MainMenu::on_nextQuestionButton_clicked(){
     else{
         std::cout << "wrong" << std::endl;
     }
-
-//    morseModel.getNextQuestion();
-//    StudyQuestion question = morseModel.getCurrentQuestion();
-//    ui->studyMorseLabel->setText(question.getQuestion());
-//    ui->userInput->clear();
 }
 
 void MainMenu::on_previousQuestionButton_clicked(){
@@ -212,20 +215,37 @@ void MainMenu::on_helpButton_clicked(){
         ui->helpPicture->setVisible(true);
 }
 
-void MainMenu::handleConfettiFallingStudy(){
-    ui->animationWidgetStudy->setDisabled(false);
-    ui->animationWidgetStudy->show();
-
-    ui->animationWidgetStudy->resetConfetti();
-    ui->animationWidgetStudy->startConfetti();
+void MainMenu::on_nextPhraseButton_clicked()
+{
+    ui->nextPhraseButton->setEnabled(false);
+    ui->nextPhraseButton->setVisible(false);
+    nextFieldQuestion();
 }
 
-void MainMenu::handleConfettiFallingFieldPractice(){
-    ui->animationWidgetFieldPractice->setDisabled(false);
-    ui->animationWidgetFieldPractice->show();
+void MainMenu::on_skipQuestionButton_clicked()
+{
+    morseModel.stopFlashing();
+    QTimer::singleShot(1000, this, &MainMenu::nextFieldQuestion);
+}
 
-    ui->animationWidgetFieldPractice->resetConfetti();
-    ui->animationWidgetFieldPractice->startConfetti();
+void MainMenu::on_userAnswerBox_textChanged()
+{
+    QString text = ui->userAnswerBox->toPlainText();
+    if (text.endsWith('\n')){
+        ui->userAnswerBox->setText(text.chopped(1));
+        on_checkAnswerButton_clicked();
+    }
+}
+
+void MainMenu::on_startOverButton_clicked()
+{
+    morseModel.stopFlashing();
+    QTimer::singleShot(1500, &morseModel, &model::retryFieldQuestion);
+}
+
+void MainMenu::on_increaseFlashingSpeed_sliderMoved(int position)
+{
+    morseModel.changeDitTime(position);
 }
 
 void MainMenu::on_userInput_textChanged(){
@@ -235,6 +255,43 @@ void MainMenu::on_userInput_textChanged(){
         on_nextQuestionButton_clicked();
     }
 }
+
+void MainMenu::on_switchEncodeDecode_clicked()
+{
+    if (encode){
+        encode = false;
+        ui->toTranslateLanguageLabel->setText("Morse code");
+        ui->resultLanguageLabel->setText("Text");
+    }
+    else {
+        encode = true;
+        ui->toTranslateLanguageLabel->setText("Text");
+        ui->resultLanguageLabel->setText("Morse code");
+    }
+
+    QString untranslated = ui->inputToTranslate->toPlainText();
+    QString translated = ui->translateResult->toPlainText();
+    ui->inputToTranslate->setText(translated);
+}
+
+void MainMenu::on_checkAnswerButton_clicked()
+{
+    if (morseModel.correctFieldAnswer(ui->userAnswerBox->toPlainText())){
+        QString reportCorrect = "Correct!\n";
+        reportCorrect.append(morseModel.getCurrentPhraseDescription());
+        ui->reportCorrectLabel->setText(reportCorrect);
+        ui->nextPhraseButton->setEnabled(true);
+        ui->nextPhraseButton->setVisible(true);
+
+        handleConfettiFallingFieldPractice();
+
+    } else {
+        ui->reportCorrectLabel->setText("Try again!");
+        QTimer::singleShot(2000, this, &MainMenu::retryFieldQuestion);
+    }
+}
+
+//Handle level switching & handling correct questions
 
 void MainMenu::level1(){
     ui->menuStack->setCurrentIndex(2);
@@ -339,23 +396,22 @@ void MainMenu::level6(){
     ui->studyMorseLabel->setText(question.getQuestion());
 }
 
+//Methods and slots for various signals
 
-void MainMenu::on_switchEncodeDecode_clicked()
-{
-    if (encode){
-        encode = false;
-        ui->toTranslateLanguageLabel->setText("Morse code");
-        ui->resultLanguageLabel->setText("Text");
-    }
-    else {
-        encode = true;
-        ui->toTranslateLanguageLabel->setText("Text");
-        ui->resultLanguageLabel->setText("Morse code");
-    }
+void MainMenu::handleConfettiFallingStudy(){
+    ui->animationWidgetStudy->setDisabled(false);
+    ui->animationWidgetStudy->show();
 
-    QString untranslated = ui->inputToTranslate->toPlainText();
-    QString translated = ui->translateResult->toPlainText();
-    ui->inputToTranslate->setText(translated);
+    ui->animationWidgetStudy->resetConfetti();
+    ui->animationWidgetStudy->startConfetti();
+}
+
+void MainMenu::handleConfettiFallingFieldPractice(){
+    ui->animationWidgetFieldPractice->setDisabled(false);
+    ui->animationWidgetFieldPractice->show();
+
+    ui->animationWidgetFieldPractice->resetConfetti();
+    ui->animationWidgetFieldPractice->startConfetti();
 }
 
 void MainMenu::updateTranslation(){
@@ -439,23 +495,6 @@ void MainMenu::on_goButton_clicked()
 
 }
 
-void MainMenu::on_checkAnswerButton_clicked()
-{
-    if (morseModel.correctFieldAnswer(ui->userAnswerBox->toPlainText())){
-        QString reportCorrect = "Correct!\n";
-        reportCorrect.append(morseModel.getCurrentPhraseDescription());
-        ui->reportCorrectLabel->setText(reportCorrect);
-        ui->nextPhraseButton->setEnabled(true);
-        ui->nextPhraseButton->setVisible(true);
-
-        handleConfettiFallingFieldPractice();
-
-    } else {
-        ui->reportCorrectLabel->setText("Try again!");
-        QTimer::singleShot(2000, this, &MainMenu::retryFieldQuestion);
-    }
-}
-
 void MainMenu::nextFieldQuestion(){
     ui->reportCorrectLabel->setText("");
     ui->userAnswerBox->setText("");
@@ -468,38 +507,5 @@ void MainMenu::retryFieldQuestion(){
     ui->userAnswerBox->setText("");
     morseModel.stopFlashing();
     QTimer::singleShot(1000, &morseModel, &model::retryFieldQuestion);
-}
-
-void MainMenu::on_nextPhraseButton_clicked()
-{
-    ui->nextPhraseButton->setEnabled(false);
-    ui->nextPhraseButton->setVisible(false);
-    nextFieldQuestion();
-}
-
-void MainMenu::on_skipQuestionButton_clicked()
-{
-    morseModel.stopFlashing();
-    QTimer::singleShot(1000, this, &MainMenu::nextFieldQuestion);
-}
-
-void MainMenu::on_userAnswerBox_textChanged()
-{
-    QString text = ui->userAnswerBox->toPlainText();
-    if (text.endsWith('\n')){
-        ui->userAnswerBox->setText(text.chopped(1));
-        on_checkAnswerButton_clicked();
-    }
-}
-
-void MainMenu::on_startOverButton_clicked()
-{
-    morseModel.stopFlashing();
-    QTimer::singleShot(1500, &morseModel, &model::retryFieldQuestion);
-}
-
-void MainMenu::on_increaseFlashingSpeed_sliderMoved(int position)
-{
-    morseModel.changeDitTime(position);
 }
 
