@@ -29,4 +29,7 @@
         <file>orange.png</file>
         <file>red.png</file>
     </qresource>
+    <qresource prefix="/Sounds">
+        <file>beep-11.wav</file>
+    </qresource>
 </RCC>
