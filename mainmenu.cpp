@@ -221,38 +221,7 @@ void MainMenu::on_helpButton_clicked(){
         ui->helpPicture->setVisible(true);
 }
 
-void MainMenu::on_nextPhraseButton_clicked()
-{
-    ui->nextPhraseButton->setEnabled(false);
-    ui->nextPhraseButton->setVisible(false);
-    nextFieldQuestion();
-}
 
-void MainMenu::on_skipQuestionButton_clicked()
-{
-    morseModel.stopFlashing();
-    QTimer::singleShot(1000, this, &MainMenu::nextFieldQuestion);
-}
-
-void MainMenu::on_userAnswerBox_textChanged()
-{
-    QString text = ui->userAnswerBox->toPlainText();
-    if (text.endsWith('\n')){
-        ui->userAnswerBox->setText(text.chopped(1));
-        on_checkAnswerButton_clicked();
-    }
-}
-
-void MainMenu::on_startOverButton_clicked()
-{
-    morseModel.stopFlashing();
-    QTimer::singleShot(1500, &morseModel, &model::retryFieldQuestion);
-}
-
-void MainMenu::on_increaseFlashingSpeed_sliderMoved(int position)
-{
-    morseModel.changeDitTime(position);
-}
 
 void MainMenu::on_userInput_textChanged(){
     QString text = ui->userInput->toPlainText();
@@ -280,22 +249,6 @@ void MainMenu::on_switchEncodeDecode_clicked()
     ui->inputToTranslate->setText(translated);
 }
 
-void MainMenu::on_checkAnswerButton_clicked()
-{
-    if (morseModel.correctFieldAnswer(ui->userAnswerBox->toPlainText())){
-        QString reportCorrect = "Correct!\n";
-        reportCorrect.append(morseModel.getCurrentPhraseDescription());
-        ui->reportCorrectLabel->setText(reportCorrect);
-        ui->nextPhraseButton->setEnabled(true);
-        ui->nextPhraseButton->setVisible(true);
-
-        handleConfettiFallingFieldPractice();
-
-    } else {
-        ui->reportCorrectLabel->setText("Try again!");
-        QTimer::singleShot(2000, this, &MainMenu::retryFieldQuestion);
-    }
-}
 
 //Handle level switching & handling correct questions
 
@@ -501,6 +454,25 @@ void MainMenu::on_goButton_clicked()
 
 }
 
+
+void MainMenu::on_checkAnswerButton_clicked()
+{
+    QString userInput = ui->userAnswerBox->toPlainText();
+    if (morseModel.correctFieldAnswer(userInput)){
+        QString reportCorrect = "Correct!\n";
+        reportCorrect.append(morseModel.getCurrentPhraseDescription());
+        ui->reportCorrectLabel->setText(reportCorrect);
+        ui->nextPhraseButton->setEnabled(true);
+        ui->nextPhraseButton->setVisible(true);
+        ui->userAnswerBox->textCursor().setPosition(userInput.length() - 1);
+        handleConfettiFallingFieldPractice();
+
+    } else {
+        ui->reportCorrectLabel->setText("Try again!");
+        QTimer::singleShot(2000, this, &MainMenu::retryFieldQuestion);
+    }
+}
+
 void MainMenu::nextFieldQuestion(){
     ui->reportCorrectLabel->setText("");
     ui->userAnswerBox->setText("");
@@ -515,3 +487,36 @@ void MainMenu::retryFieldQuestion(){
     QTimer::singleShot(1000, &morseModel, &model::retryFieldQuestion);
 }
 
+
+void MainMenu::on_nextPhraseButton_clicked()
+{
+    ui->nextPhraseButton->setEnabled(false);
+    ui->nextPhraseButton->setVisible(false);
+    nextFieldQuestion();
+}
+
+void MainMenu::on_skipQuestionButton_clicked()
+{
+    morseModel.stopFlashing();
+    QTimer::singleShot(1000, this, &MainMenu::nextFieldQuestion);
+}
+
+void MainMenu::on_userAnswerBox_textChanged()
+{
+    QString text = ui->userAnswerBox->toPlainText();
+    if (text.endsWith('\n')){
+        ui->userAnswerBox->setText(text.chopped(1));
+        on_checkAnswerButton_clicked();
+    }
+}
+
+void MainMenu::on_startOverButton_clicked()
+{
+    morseModel.stopFlashing();
+    QTimer::singleShot(1500, &morseModel, &model::retryFieldQuestion);
+}
+
+void MainMenu::on_increaseFlashingSpeed_sliderMoved(int position)
+{
+    morseModel.changeDitTime(position);
+}

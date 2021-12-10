@@ -203,7 +203,9 @@ int model::getFieldPhrasesCount(){
 }
 
 bool model::correctFieldAnswer(QString answer){
-    return answer.trimmed() == currentPhrase;
+    if (answer == "")
+        return false;
+    return answer.trimmed().toLower() == currentPhrase.toLower();
 }
 
 void model::retryFieldQuestion(){
