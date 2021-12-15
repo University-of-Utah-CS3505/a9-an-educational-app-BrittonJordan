@@ -414,6 +414,8 @@ void MainMenu::displayFieldPracticeInstructions(){
     ui->startOverButton->setEnabled(false);
     ui->startOverButton->setVisible(false);
 
+    ui->flashLabel->setVisible(false);
+
     ui->flashingSpeedLabel->setEnabled(false);
     ui->flashingSpeedLabel->setVisible(false);
 
@@ -443,6 +445,8 @@ void MainMenu::on_goButton_clicked()
 
     ui->startOverButton->setEnabled(true);
     ui->startOverButton->setVisible(true);
+
+    ui->flashLabel->setVisible(true);
 
     ui->flashingSpeedLabel->setEnabled(true);
     ui->flashingSpeedLabel->setVisible(true);
