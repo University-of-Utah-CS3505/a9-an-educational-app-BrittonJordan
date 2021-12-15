@@ -37,7 +37,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>60</y>
+        <y>80</y>
         <width>661</width>
         <height>151</height>
        </rect>
@@ -57,8 +57,8 @@
      <widget class="QLabel" name="topMenuPictureLabel">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>210</y>
+        <x>45</x>
+        <y>205</y>
         <width>561</width>
         <height>331</height>
        </rect>

@@ -30,6 +30,8 @@ MainMenu::MainMenu(QWidget *parent)
     QString family = QFontDatabase::applicationFontFamilies(id).at(0);
     QFont armyStyle(family);
 
+    QFont armyStyle34(family);
+    armyStyle34.setPointSize(34);
     QFont armyStyle28(family);
     armyStyle28.setPointSize(28);
     QFont armyStyle22(family);
@@ -62,7 +64,7 @@ MainMenu::MainMenu(QWidget *parent)
     ui->startOverButton->setFont(armyStyle10);
 
     // Set font for labels
-    ui->gameTitleLabel->setFont(armyStyle28);
+    ui->gameTitleLabel->setFont(armyStyle34);
     ui->studyLabel->setFont(armyStyle22);
     ui->studyLevelLabel->setFont(armyStyle22);
     ui->questionNumber->setFont(armyStyle22);
