@@ -10,11 +10,6 @@ model::model(QObject *parent) : QObject(parent), currentQuestion(0), continueFla
    readFieldPhrasesFile();
 }
 
-/**
- * @brief model::generateLevel Generates a level of StudyQuestions.
- *                             Modifies the level instance
- * @param levelNumber Determines which word list the level is generated from
- */
 void model::generateLevel(int levelNumber){
     currentQuestion = 0;
     QVector<StudyQuestion> newLevel;
