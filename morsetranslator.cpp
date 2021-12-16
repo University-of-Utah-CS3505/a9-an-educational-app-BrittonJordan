@@ -20,7 +20,7 @@ MorseTranslator::MorseTranslator(){
 }
 
 QString MorseTranslator::englishToMorse(QString english){
-    english = removeWhitespace(english.toLower());
+    english = english.toLower().trimmed();
     QString morse = "";
     for (int i = 0; i < english.length(); i++){
         if (english[i] == ' '){
@@ -38,7 +38,7 @@ QString MorseTranslator::englishToMorse(QString english){
 
 
 QString MorseTranslator::morseToEnglish(QString morse) {
-    morse = removeWhitespace(morse);
+    morse = morse.trimmed();
     QString english = "";
     QString currentMorseCharacter = "";
     for (int i = 0; i < morse.length(); i++){
@@ -66,38 +66,4 @@ QString MorseTranslator::morseToEnglish(QString morse) {
     if (toChar.find(currentMorseCharacter) != toChar.end())
         english.append(toChar[currentMorseCharacter]);
     return english;
-}
-
-
-QString MorseTranslator::removeWhitespace(QString str){
-    // Remove leading whitespace
-    if (str.length() > 0){
-        QChar currChar = str.at(0);
-        int whitespaceCount = 0;
-        while (currChar == ' '){
-           whitespaceCount++;
-           if (whitespaceCount == str.length())
-               break;
-           else
-               currChar = str.at(whitespaceCount);
-        }
-        if (whitespaceCount > 0)
-            str.remove(0, whitespaceCount);
-    }
-
-    // Remove trailing whitespace
-    if (str.length() > 0){
-        QChar currChar = str.at(str.length() - 1);
-        int whitespaceCount = 0;
-        while (currChar == ' '){
-           whitespaceCount++;
-           if (str.length() - whitespaceCount == 0)
-               break;
-           else
-               currChar = str.at(str.length() - 1 - whitespaceCount);
-        }
-        if (whitespaceCount > 0)
-            str.remove(str.length() - whitespaceCount, whitespaceCount);
-    }
-    return str;
 }

@@ -25,9 +25,7 @@ private:
 
 public:
     MorseTranslatorTests();
-
     void runTests();
-
 };
 
 #endif // MORSETRANSLATORTESTS_H

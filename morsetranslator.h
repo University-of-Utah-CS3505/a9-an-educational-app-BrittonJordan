@@ -10,19 +10,11 @@ class MorseTranslator{
 private:
     QMap<QString, QChar> toChar;
     QMap<QChar, QString> toMorse;
-    QString removeWhitespace(QString str);
 
 public:
     MorseTranslator();
-
     QString morseToEnglish(QString morse);
-
     QString englishToMorse(QString english);
-
-
-
-
-
 };
 
 

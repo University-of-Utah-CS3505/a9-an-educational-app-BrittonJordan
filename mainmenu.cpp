@@ -80,9 +80,6 @@ MainMenu::MainMenu(QWidget *parent)
     ui->inputToTranslate->setStyleSheet("background-color: #f5e9d7");
     ui->translateResult->setStyleSheet("background-color: #f5e9d7");
 
-    MorseTranslatorTests test;
-    test.runTests();
-
     //Level 1 Connect
     connect(ui->level1Button, &QPushButton::clicked, this, &MainMenu::level1);
 
@@ -187,8 +184,6 @@ void MainMenu::on_fieldPracticeButton_clicked()
 
 void MainMenu::on_nextQuestionButton_clicked(){
     if(morseModel.isCorrectAnswer(ui->userInput->toPlainText())){
-        std::cout << "correct" << std::endl;
-
         questionCounter++;
         ui->questionNumber->setText("Question Number: " +QString::number(questionCounter));
 
@@ -197,9 +192,6 @@ void MainMenu::on_nextQuestionButton_clicked(){
         morseModel.getNextQuestion();
         StudyQuestion question = morseModel.getCurrentQuestion();
         ui->studyMorseLabel->setText(question.getQuestion());
-    }
-    else{
-        std::cout << "wrong" << std::endl;
     }
 }
 

@@ -225,8 +225,6 @@ void model::flashNewPhrase(){
 void model::flashTextPhrase(QString textPhrase){
     currentPhrase = textPhrase;
     flashingPhrase = translator.englishToMorse(textPhrase);
-
-    std::cout<<"Flashing: " << textPhrase.toStdString() <<std::endl;
     continueFlashing = true;
     flashCharacter();
 }
